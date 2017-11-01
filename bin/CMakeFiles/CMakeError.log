@@ -1,0 +1,15 @@
+Determining if the include file city.h exists failed with the following output:
+Change Dir: /Users/weizheng/Documents/CSC2525-Project/bin/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_576ec/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_576ec.dir/build.make CMakeFiles/cmTC_576ec.dir/build
+Building CXX object CMakeFiles/cmTC_576ec.dir/CheckIncludeFile.cxx.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -std=c++11    -o CMakeFiles/cmTC_576ec.dir/CheckIncludeFile.cxx.o -c /Users/weizheng/Documents/CSC2525-Project/bin/CMakeFiles/CMakeTmp/CheckIncludeFile.cxx
+/Users/weizheng/Documents/CSC2525-Project/bin/CMakeFiles/CMakeTmp/CheckIncludeFile.cxx:1:10: fatal error: 'city.h' file not found
+#include <city.h>
+         ^~~~~~~~
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_576ec.dir/CheckIncludeFile.cxx.o] Error 1
+make: *** [cmTC_576ec/fast] Error 2
+
+
