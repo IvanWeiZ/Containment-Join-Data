@@ -16,6 +16,10 @@
 # along with set_sim_join.  If not, see <http://www.gnu.org/licenses/>.
 
 
+
+set(STATVERSIONS 1)
+set(EXT_STATISTICS 1)
+
 cmake_minimum_required(VERSION 2.8)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")

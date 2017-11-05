@@ -48,8 +48,6 @@ typedef LSH<Jaccard> JLSH;
 
 namespace po = boost::program_options;
 
-#define CYCLE_COUNT 1
-#define EXT_STATISTICS 1
 int main(int argc, char ** argv) {
 	// Declare the supported options.
 	po::options_description desc("Allowed options");
