@@ -45,7 +45,8 @@ def scrape(url,output_name,filename=None):
 
         filepath = os.path.join(output_name, filename) + '.csv'
 
-        with open(filepath, mode='w', newline='', encoding='utf-8') as output:
+        #with open(filepath, mode='w', newline='', encoding='utf-8') as output:
+        with open(filepath, 'w') as output:
             # Deal with Windows inserting an extra '\r' in line terminators
             if platform.system() == 'Windows':
                 kwargs = {'lineterminator': '\n'}
@@ -152,4 +153,3 @@ def clean_data(row):
 
 if __name__ == '__main__':
     scrape(None,sys.argv[1],sys.argv[2])
-    
