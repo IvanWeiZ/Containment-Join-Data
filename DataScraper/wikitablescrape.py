@@ -6,8 +6,12 @@ import platform
 
 from bs4 import BeautifulSoup
 import requests
+import codecs
+import sys
 
-def scrape(url, output_name):
+
+
+def scrape(url,output_name,filename=None):
     """Create CSVs from all tables in a Wikipedia article.
     ARGS:
         url (str): The full URL of the Wikipedia article to scrape tables from.
@@ -15,9 +19,15 @@ def scrape(url, output_name):
     """
 
     # Read tables from Wikipedia article into list of HTML strings
-    resp = requests.get(url)
-    soup = BeautifulSoup(resp.content, 'lxml')
-    table_classes = {"class": ["sortable", "plainrowheaders"]}
+    if(filename==None):
+        resp = requests.get(url)
+        soup = BeautifulSoup(resp.content, 'lxml')
+    else:
+        f=codecs.open(filename, 'r')
+        soup = BeautifulSoup(f, 'lxml')
+
+    
+    table_classes = {"class": []}
     wikitables = soup.findAll("table", table_classes)
 
     # Create folder for output if it doesn't exist
@@ -138,3 +148,8 @@ def clean_data(row):
         cleaned_cells += [cleaned]
 
     return cleaned_cells
+
+
+if __name__ == '__main__':
+    scrape(None,sys.argv[1],sys.argv[2])
+    
