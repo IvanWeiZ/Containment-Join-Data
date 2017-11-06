@@ -32,7 +32,7 @@ def scrape(url,output_name,filename=None):
     table_classes = {"class": ["sortable", "plainrowheaders"]}
     #wikitables = soup.findAll("table", table_classes)
     wikitables = soup.findAll("table")
-
+    print(wikitables)
     # Create folder for output if it doesn't exist
     try:
         os.mkdir(output_name)
