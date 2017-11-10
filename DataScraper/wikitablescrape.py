@@ -8,6 +8,8 @@ from bs4 import BeautifulSoup
 import requests
 import codecs
 import sys
+from io import open
+
 
 
 
@@ -27,9 +29,10 @@ def scrape(url,output_name,filename=None):
         soup = BeautifulSoup(f, 'lxml')
 
     
-    table_classes = {"class": []}
-    wikitables = soup.findAll("table", table_classes)
-
+    table_classes = {"class": ["sortable", "plainrowheaders"]}
+    #wikitables = soup.findAll("table", table_classes)
+    wikitables = soup.findAll("table")
+    print(wikitables)
     # Create folder for output if it doesn't exist
     try:
         os.mkdir(output_name)
@@ -45,8 +48,8 @@ def scrape(url,output_name,filename=None):
 
         filepath = os.path.join(output_name, filename) + '.csv'
 
-        #with open(filepath, mode='w', newline='', encoding='utf-8') as output:
-        with open(filepath, 'w') as output:
+        with open(filepath, mode='w', newline='', encoding='utf-8') as output:
+        #with open(filepath, 'w') as output:
             # Deal with Windows inserting an extra '\r' in line terminators
             if platform.system() == 'Windows':
                 kwargs = {'lineterminator': '\n'}
