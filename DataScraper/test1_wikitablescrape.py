@@ -12,8 +12,8 @@ except FileNotFoundError:
     pass
 
 wikitablescrape.scrape(
-    url="http://www.basketball-reference.com/draft/NBA_2014.html",
-    output_name="test"
+    url="https://en.wikipedia.org/wiki/List_of_current_NBA_team_rosters",
+    output_name="output"
 )
 
 
