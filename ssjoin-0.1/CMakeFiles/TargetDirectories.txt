@@ -1,4 +1,8 @@
 /u/zhengw14/CSC2525-Project/ssjoin-0.1/CMakeFiles/edit_cache.dir
+/u/zhengw14/CSC2525-Project/ssjoin-0.1/CMakeFiles/set_sim_join_nostat.dir
+/u/zhengw14/CSC2525-Project/ssjoin-0.1/CMakeFiles/set_sim_join.dir
 /u/zhengw14/CSC2525-Project/ssjoin-0.1/CMakeFiles/manverify.dir
 /u/zhengw14/CSC2525-Project/ssjoin-0.1/CMakeFiles/rebuild_cache.dir
-/u/zhengw14/CSC2525-Project/ssjoin-0.1/CMakeFiles/set_sim_join.dir
+/u/zhengw14/CSC2525-Project/ssjoin-0.1/CMakeFiles/set_sim_join_candonly.dir
+/u/zhengw14/CSC2525-Project/ssjoin-0.1/CMakeFiles/set_sim_join_ext_stat.dir
+/u/zhengw14/CSC2525-Project/ssjoin-0.1/CMakeFiles/set_sim_join_cycles.dir

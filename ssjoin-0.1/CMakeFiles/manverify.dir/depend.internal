@@ -8,3 +8,10 @@ CMakeFiles/manverify.dir/manverify.cxx.o
  /u/zhengw14/CSC2525-Project/ssjoin-0.1/similarity.h
  /u/zhengw14/CSC2525-Project/ssjoin-0.1/statistics.h
  /u/zhengw14/CSC2525-Project/ssjoin-0.1/verify.h
+ sparsehash/dense_hash_map
+ sparsehash/internal/densehashtable.h
+ sparsehash/internal/hashtable-common.h
+ sparsehash/internal/libc_allocator_with_realloc.h
+ sparsehash/internal/sparseconfig.h
+ sparsehash/template_util.h
+ sparsehash/type_traits.h
