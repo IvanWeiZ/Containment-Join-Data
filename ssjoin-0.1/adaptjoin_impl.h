@@ -113,6 +113,8 @@ void AdaptJoin<Similarity, IndexingStrategy, IndexStructurePolicy>::dojoin(
 		unsigned int maxprefix = Similarity::maxprefix(reclen, threshold);
 		unsigned int minsize = Similarity::minsize(reclen, threshold);
 
+		std::cout << reclen << "   " << indexedrecords[indexedrecords.size() - 1].tokens.size() << std::endl;
+
 		// Check whether cache is to renew
 		if(lastprobesize != reclen) {
 			lastprobesize = reclen;
