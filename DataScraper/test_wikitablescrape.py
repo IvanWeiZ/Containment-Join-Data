@@ -22,9 +22,16 @@ wikitablescrape.scrape(
 )
 
 wikitablescrape.scrape(
+    url="https://en.wikipedia.org/wiki/List_of_current_NBA_team_rosters",
+    output_name="123"
+)
+
+wikitablescrape.scrape(
     url="https://en.wikipedia.org/wiki/List_of_National_Basketball_Association_career_scoring_leaders",
     output_name="nba"
 )
+
+
 
 wikitablescrape.scrape(
     url="https://en.wikipedia.org/wiki/List_of_highest-grossing_films",
@@ -33,7 +40,10 @@ wikitablescrape.scrape(
 
 # Move all CSV folders into a single 'output' folder
 os.makedirs('output')
-shutil.move('./mountains', './output')
-shutil.move('./volcanoes', './output')
-shutil.move('./nba', './output')
-shutil.move('./films', './output')
+shutil.move('./outputTables/123', './output')
+
+shutil.move('./outputTables/mountains', './output')
+shutil.move('./outputTables/volcanoes', './output')
+shutil.move('./outputTables/nba', './output')
+shutil.move('./outputTables/films', './output')
+

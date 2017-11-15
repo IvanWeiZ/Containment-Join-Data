@@ -7,9 +7,6 @@ import platform
 from bs4 import BeautifulSoup
 import requests
 import codecs
-import sys
-from io import open
-
 
 
 
@@ -28,25 +25,32 @@ def scrape(url,output_name,filename=None):
         f=codecs.open(filename, 'r')
         soup = BeautifulSoup(f, 'lxml')
 
+
     
-    table_classes = {"class": ["sortable", "plainrowheaders"]}
-    #wikitables = soup.findAll("table", table_classes)
-    wikitables = soup.findAll("table")
-    print(wikitables)
+    table_classes = {"class": ["sortable", "wikitable"]}
+    wikitables = soup.findAll("table", table_classes)
+    #wikitables = soup.findAll("table")
+    #print(wikitables)
+    if len(wikitables)>0:
+        try:
+            os.mkdir("./outputTables/"+output_name)
+        except Exception:  # Generic OS Error
+            pass 
+    else:
+        return
+    #print(wikitables)
     # Create folder for output if it doesn't exist
-    try:
-        os.mkdir(output_name)
-    except Exception:  # Generic OS Error
-        pass
+
 
     for index, table in enumerate(wikitables):
         # Make a unique file name for each CSV
         if index == 0:
-            filename = output_name
+            filename = "table"
+            
         else:
-            filename = output_name + '_' + str(index)
+            filename = "table" + '_' + str(index)
 
-        filepath = os.path.join(output_name, filename) + '.csv'
+        filepath = os.path.join("./outputTables/"+output_name, filename) + '.csv'
 
         with open(filepath, mode='w', newline='', encoding='utf-8') as output:
         #with open(filepath, 'w') as output:
@@ -100,7 +104,10 @@ def write_html_table_to_csv(table, writer):
                     'rows_left': int(cell["rowspan"]),
                     'value': cell,
                 }
-                saved_rowspans[index] = rowspan_data
+                try:
+                    saved_rowspans[index] = rowspan_data
+                except:
+                    print("error:",cell,rowspan_data,len(saved_rowspans),index)
 
         if cells:
             # Clean the data of references and unusual whitespace
@@ -153,6 +160,9 @@ def clean_data(row):
 
     return cleaned_cells
 
-
+import sys
 if __name__ == '__main__':
-    scrape(None,sys.argv[1],sys.argv[2])
+    for i in range(1,len(sys.argv)):
+        filenames=sys.argv[i].split("/")
+        print(filenames[len(filenames)-1],sys.argv[i])
+        scrape(None,filenames[len(filenames)-1],sys.argv[i])
