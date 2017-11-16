@@ -286,7 +286,7 @@ class IndexFirstPolicy {
 
 			unsigned int maxLen;
 
-			inline maxsizechecker(unsigned int curlen, threshold_type threshold) : curlen(curlen), threshold(threshold),maxLen(maxLen) {
+			inline maxsizechecker(unsigned int curlen, threshold_type threshold, unsigned int maxLen) : curlen(curlen), threshold(threshold),maxLen(maxLen) {
 				maxlen = Algorithm::Similarity::maxsize(curlen, threshold,maxLen);
 			}
 
