@@ -6,5 +6,5 @@ CXX_FLAGS =  -std=c++11 -O3 -DNDEBUG
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/u/zhengw14/CSC2525-Project/ssjoin-0.1 
+CXX_INCLUDES = -I/u/zhengw14/CSC2525-Cont/CSC2525-Project/ssjoin-0.1 
 
