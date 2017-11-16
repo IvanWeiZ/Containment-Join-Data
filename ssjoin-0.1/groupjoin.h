@@ -296,7 +296,7 @@ void GroupJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrat
 		//Minimum size of records in index
 		unsigned int minsize = Similarity::minsize(greclen, threshold);
 
-		std::cout << greclen << "   " << indexedrecords[indexedrecords.size() - 1].tokens.size() << std::endl;
+		//std::cout << greclen << "   " << indexedrecords[indexedrecords.size() - 1].tokens.size() << std::endl;
 
 		// Check whether cache is to renew
 		if(lastprobesize != greclen) {
