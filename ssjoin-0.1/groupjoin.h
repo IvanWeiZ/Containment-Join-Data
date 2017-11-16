@@ -292,6 +292,7 @@ void GroupJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrat
 	for (unsigned grecind = 0; grecind < groupproberecordssize(); ++grecind) {
 		typename Index::GroupProbeRecord & grecord = getgroupproberecord(groupindexedrecords, groupforeignrecords, grecind);
 		unsigned int greclen = grecord.size;
+		unsigned int maxLen = indexedrecords[indexedrecords.size() - 1].tokens.size();
 
 		//Minimum size of records in index
 		unsigned int minsize = Similarity::minsize(greclen, threshold);
@@ -301,7 +302,7 @@ void GroupJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrat
 		// Check whether cache is to renew
 		if(lastprobesize != greclen) {
 			lastprobesize = greclen;
-			unsigned int maxel = Index::SELF_JOIN ? greclen : Similarity::maxsize(greclen, threshold);
+			unsigned int maxel = Index::SELF_JOIN ? greclen : Similarity::maxsize(greclen, threshold,maxLen);
 			minoverlapcache.resize(maxel + 1);
 			for(unsigned int i = minsize; i <= maxel; ++i) {
 				minoverlapcache[i] = Similarity::minoverlap(greclen, i, threshold);
@@ -313,7 +314,7 @@ void GroupJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrat
 		assert(maxprefix == grecord.maxprefixsize);
 
 		typename MpJoinIndexingStrategyPolicy::template maxsizechecker<self_type> 
-			maxsizechecker(greclen, threshold);
+			maxsizechecker(greclen, threshold,maxLen);
 
 		//  Hook for postprefix filter - would need unrolling of group
 		// postprefixfilter.probe_record_compute(record, maxprefix);

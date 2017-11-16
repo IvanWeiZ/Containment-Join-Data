@@ -279,7 +279,7 @@ void LSH<Similarity>::dojoin(HandleOutput * handleoutput) {
 		IntRecord & record = indexedrecords[recind];
 		unsigned int reclen = record.tokens.size();
 		unsigned int minsize = Similarity::minsize(reclen, threshold);
-		unsigned int maxsize = Similarity::maxsize(reclen, threshold);
+		unsigned int maxsize = Similarity::maxsize(reclen, threshold, maxsize);
 		cands.clear();
 
 		//Get signatures of current record

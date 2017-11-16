@@ -109,6 +109,7 @@ void AdaptJoin<Similarity, IndexingStrategy, IndexStructurePolicy>::dojoin(
 	for (unsigned recind = 0; recind < proberecordssize(); ++recind) {
 		typename Index::ProbeRecord & record = getproberecord(indexedrecords, foreignrecords, recind);
 		unsigned int reclen = record.tokens.size();
+		unsigned int maxLen = indexedrecords[indexedrecords.size() - 1].tokens.size();
 
 		unsigned int maxprefix = Similarity::maxprefix(reclen, threshold);
 		unsigned int minsize = Similarity::minsize(reclen, threshold);
@@ -118,14 +119,14 @@ void AdaptJoin<Similarity, IndexingStrategy, IndexStructurePolicy>::dojoin(
 		// Check whether cache is to renew
 		if(lastprobesize != reclen) {
 			lastprobesize = reclen;
-			unsigned int maxel = Index::SELF_JOIN ? reclen : Similarity::maxsize(reclen, threshold);
+			unsigned int maxel = Index::SELF_JOIN ? reclen : Similarity::maxsize(reclen, threshold, maxLen);
 			minoverlapcache.resize(maxel + 1);
 			for(unsigned int i = minsize; i <= maxel; ++i) {
 				minoverlapcache[i] = Similarity::minoverlap(reclen, i, threshold);
 			}
 		}
 
-		typename IndexingStrategy::template maxsizechecker<self_type> maxsizechecker(reclen, threshold);
+		typename IndexingStrategy::template maxsizechecker<self_type> maxsizechecker(reclen, threshold,maxLen);
 
 		unsigned int verifyCostPerCand;
 #if 0
@@ -135,7 +136,7 @@ void AdaptJoin<Similarity, IndexingStrategy, IndexStructurePolicy>::dojoin(
 		} else {
 #endif
 			//Stick to cost function in paper
-			unsigned int maxsize = Similarity::maxsize(reclen, threshold);
+			unsigned int maxsize = Similarity::maxsize(reclen, threshold,maxLen);
 			verifyCostPerCand = ((minsize + maxsize) / 2 + reclen);
 #if 0
 		}

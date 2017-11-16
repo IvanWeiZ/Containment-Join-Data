@@ -44,12 +44,12 @@ class GenericSimilarity {
 			return Similarity::minsize(len, threshold);
 		}
 
-		inline static unsigned int maxsize(unsigned int len, threshold_type threshold) {
-			return Similarity::maxsize(len, threshold);
+		inline static unsigned int maxsize(unsigned int len, threshold_type threshold, unsigned int maxLen) {
+			return Similarity::maxsize(len, threshold, maxLen);
 		}
 
-		inline static unsigned int maxsize(unsigned int len, unsigned int pos, threshold_type threshold) {
-			return Similarity::maxsize(len, pos, threshold);
+		inline static unsigned int maxsize(unsigned int len, unsigned int pos, threshold_type threshold,  unsigned int maxLen) {
+			return Similarity::maxsize(len, pos, threshold, maxLen);
 		}
 		
 };
@@ -65,11 +65,13 @@ class JaccardSimilarity {
 			return (unsigned int)(ceil(threshold * len));
 		}
 		
-		inline static unsigned int maxsize(unsigned int len, double threshold) {
+		inline static unsigned int maxsize(unsigned int len, double threshold, unsigned int maxLen) {
+			(void) maxLen;
 			return (unsigned int)((len / threshold));
 		}
 		
-		inline static unsigned int maxsize(unsigned int len, unsigned int pos, double threshold) {
+		inline static unsigned int maxsize(unsigned int len, unsigned int pos, double threshold, unsigned int maxLen) {
+			(void) maxLen;
 			return (unsigned int)((len - ((1.0 - PMAXSIZE_EPS) + threshold) * pos) / threshold);
 		}
 		
@@ -79,19 +81,26 @@ class CosineSimilarity {
 	public:
 		typedef double threshold_type;
 		inline static unsigned int minoverlap(unsigned int len1, unsigned int len2, double threshold) {
-			return (unsigned int)ceil(threshold * sqrt(len1 * len2));
+			(void) len2;
+			return (unsigned int)ceil(threshold * len1);
 		}
 		
 		inline static unsigned int minsize(unsigned int len, double threshold) {
-			return (unsigned int)(ceil(threshold * threshold * len));
+			return (unsigned int)(ceil(threshold * len));
 		}
 		
-		inline static unsigned int maxsize(unsigned int len, double threshold) {
-			return (unsigned int)(len / (threshold * threshold));
+		inline static unsigned int maxsize(unsigned int len, double threshold, unsigned int maxLen) {
+			(void) len;
+			(void) threshold;
+			return maxLen;
 		}
 		
-		inline static unsigned int maxsize(unsigned int len, unsigned int pos, double threshold) {
-			return (unsigned int)(PMAXSIZE_EPS + (len * len - 2 * len * pos + pos * pos)/(len * threshold * threshold));
+		inline static unsigned int maxsize(unsigned int len, unsigned int pos, double threshold, unsigned int maxLen) {
+			(void) len;
+			(void) threshold;
+			(void) pos;
+
+			return maxLen;
 		}
 		
 };
@@ -107,11 +116,13 @@ class DiceSimilarity {
 			return (unsigned int)(ceil(threshold * len / ( 2 - threshold )));
 		}
 		
-		inline static unsigned int maxsize(unsigned int len, double threshold) {
+		inline static unsigned int maxsize(unsigned int len, double threshold,unsigned int maxLen) {
+			(void) maxLen;
 			return (unsigned int)((2 - threshold) * len / threshold);
 		}
 		
-		inline static unsigned int maxsize(unsigned int len, unsigned int pos, double threshold) {
+		inline static unsigned int maxsize(unsigned int len, unsigned int pos, double threshold,unsigned int maxLen) {
+			(void) maxLen;
 			return (unsigned int)(((2 - threshold) * len - (2 - PMAXSIZE_EPS) * pos) / threshold);
 		}
 		
@@ -134,11 +145,13 @@ class HammingSimilarity {
 			return len > threshold ? len - threshold : 1;
 		}
 
-		inline static unsigned int maxsize(unsigned int len, threshold_type threshold) {
+		inline static unsigned int maxsize(unsigned int len, threshold_type threshold, unsigned int maxLen) {
+			(void) maxLen;
 			return len + threshold;
 		}
 
-		inline static unsigned int maxsize(unsigned int len, unsigned int pos, threshold_type threshold) {
+		inline static unsigned int maxsize(unsigned int len, unsigned int pos, threshold_type threshold, unsigned int maxLen) {
+			(void) maxLen;
 			return len + threshold - 2 * pos;
 		}
 

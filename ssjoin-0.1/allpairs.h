@@ -181,6 +181,7 @@ void AllPairs<AllPairsSimilarity, AllPairsIndexingStrategyPolicy, AllPairsLength
 	for (unsigned recind = 0; recind < proberecordssize(); ++recind) {
 		typename Index::ProbeRecord & record = getproberecord(indexedrecords, foreignrecords, recind);
 		unsigned int reclen = record.tokens.size();
+		unsigned int maxLen = indexedrecords[indexedrecords.size() - 1].tokens.size();
 
 		//std::cout << reclen << "   " << indexedrecords[indexedrecords.size() - 1].tokens.size() << std::endl;
 
@@ -190,7 +191,7 @@ void AllPairs<AllPairsSimilarity, AllPairsIndexingStrategyPolicy, AllPairsLength
 		// Check whether cache is to renew
 		if(lastprobesize != reclen) {
 			lastprobesize = reclen;
-			unsigned int maxel = Index::SELF_JOIN ? reclen : Similarity::maxsize(reclen, threshold);
+			unsigned int maxel = Index::SELF_JOIN ? reclen : Similarity::maxsize(reclen, threshold,maxLen);
 			minoverlapcache.resize(maxel + 1);
 			for(unsigned int i = minsize; i <= maxel; ++i) {
 				minoverlapcache[i] = Similarity::minoverlap(reclen, i, threshold);
@@ -201,7 +202,7 @@ void AllPairs<AllPairsSimilarity, AllPairsIndexingStrategyPolicy, AllPairsLength
 		unsigned int maxprefix = Similarity::maxprefix(reclen, threshold);
 
 		typename AllPairsIndexingStrategyPolicy::template maxsizechecker<self_type> 
-			maxsizechecker(reclen, threshold);
+			maxsizechecker(reclen, threshold, maxLen);
 
 
 		// foreach elem in probing prefix

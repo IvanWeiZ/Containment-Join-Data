@@ -255,12 +255,13 @@ class AdaptJoinIndexOnTheFlyPolicy {
 		struct maxsizechecker {
 			unsigned int maxlen;
 			unsigned int curlen;
+			unsigned int maxLen;
 
 			typedef typename Algorithm::Similarity::threshold_type threshold_type;
 			threshold_type threshold;
 
-			inline maxsizechecker(unsigned int curlen, threshold_type threshold) : curlen(curlen), threshold(threshold) {
-				maxlen = Algorithm::Similarity::maxsize(curlen, threshold);
+			inline maxsizechecker(unsigned int curlen, threshold_type threshold, unsigned int maxLen) : curlen(curlen), threshold(threshold),maxLen(maxLen) {
+				maxlen = Algorithm::Similarity::maxsize(curlen, threshold,maxLen);
 			}
 
 			inline bool isabove(unsigned int len) {
@@ -356,8 +357,10 @@ class AdaptJoinIndexFirstPolicy {
 			threshold_type threshold;
 
 			unsigned int maxlen;
-			inline maxsizechecker(unsigned int curlen, threshold_type threshold) : curlen(curlen), threshold(threshold) {
-				maxlen = Algorithm::Similarity::maxsize(curlen, threshold);
+			unsigned int maxLen;
+
+			inline maxsizechecker(unsigned int curlen, threshold_type threshold) : curlen(curlen), threshold(threshold),maxLen(maxLen) {
+				maxlen = Algorithm::Similarity::maxsize(curlen, threshold,maxLen);
 			}
 
 /*			inline void updateprobepos(unsigned int pos) {

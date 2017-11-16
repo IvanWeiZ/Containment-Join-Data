@@ -85,12 +85,14 @@ class IndexOnTheFlyPolicy {
 		struct maxsizechecker {
 			unsigned int maxlen;
 			unsigned int curlen;
+			unsigned int maxLen;
+
 
 			typedef typename Algorithm::Similarity::threshold_type threshold_type;
 			threshold_type threshold;
-			inline maxsizechecker(unsigned int curlen, threshold_type threshold) : curlen(curlen), threshold(threshold) {
+			inline maxsizechecker(unsigned int curlen, threshold_type threshold, unsigned int maxLen) : curlen(curlen), threshold(threshold),maxLen(maxLen) {
 				if(Algorithm::LengthFilterPolicy::POS) {
-					maxlen = Algorithm::Similarity::maxsize(curlen, threshold);
+					maxlen = Algorithm::Similarity::maxsize(curlen, threshold, maxLen);
 				}
 			}
 
@@ -104,7 +106,7 @@ class IndexOnTheFlyPolicy {
 			
 			inline void updateprobepos(unsigned int pos) {
 				if(Algorithm::LengthFilterPolicy::POS) {
-					maxlen = Algorithm::Similarity::maxsize(curlen, pos, threshold);
+					maxlen = Algorithm::Similarity::maxsize(curlen, threshold, maxLen);
 				}
 			}
 
@@ -186,13 +188,15 @@ class IndexFirstPolicy {
 			threshold_type threshold;
 
 			unsigned int maxlen;
-			inline maxsizechecker(unsigned int curlen, threshold_type threshold) : curlen(curlen), threshold(threshold) {
-				maxlen = Algorithm::Similarity::maxsize(curlen, threshold);
+			unsigned int maxLen;
+
+			inline maxsizechecker(unsigned int curlen, threshold_type threshold) : curlen(curlen), threshold(threshold),maxLen(maxLen) {
+				maxlen = Algorithm::Similarity::maxsize(curlen, threshold,maxLen);
 			}
 
 			inline void updateprobepos(unsigned int pos) {
 				if(Algorithm::LengthFilterPolicy::POS) {
-					maxlen = Algorithm::Similarity::maxsize(curlen, pos, threshold);
+					maxlen = Algorithm::Similarity::maxsize(curlen, pos, threshold,maxLen);
 				}
 			}
 
