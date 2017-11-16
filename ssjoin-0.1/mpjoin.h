@@ -218,7 +218,7 @@ void MpJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrategy
 	for (unsigned recind = 0; recind < proberecordssize(); ++recind) {
 		typename Index::ProbeRecord & record = getproberecord(indexedrecords, foreignrecords, recind);
 		unsigned int reclen = record.tokens.size();
-		std::cout << reclen << "   " << indexedrecords[indexedrecords.size() - 1].tokens.size() << std::endl;
+		//std::cout << reclen << "   " << indexedrecords[indexedrecords.size() - 1].tokens.size() << std::endl;
 		//Minimum size of records in index
 		unsigned int minsize = Similarity::minsize(reclen, threshold);
 
