@@ -83,19 +83,19 @@ class CosineSimilarity {
 		typedef double threshold_type;
 		inline static unsigned int minoverlap(unsigned int len1, unsigned int len2, double threshold) {
 			(void) len2;
-			std::cout<<len1<<" "<<len2<<" "<<threshold<<endl;
+			std::cout<<len1<<" "<<len2<<" "<<threshold<<std::endl;
 			return (unsigned int)ceil(threshold * len1);
 		}
 		
 		inline static unsigned int minsize(unsigned int len, double threshold) {
-			std::cout<<len<<" "<<threshold<<endl;
+			std::cout<<len<<" "<<threshold<<std::endl;
 			return (unsigned int)(ceil(threshold * len));
 		}
 		
 		inline static unsigned int maxsize(unsigned int len, double threshold, unsigned int maxLen) {
 			(void) len;
 			(void) threshold;
-			std::cout<<len<< "   "<<maxLen<<" "<<threshold<<endl;
+			std::cout<<len<< "   "<<maxLen<<" "<<threshold<<std::endl;
 			return maxLen;
 		}
 		
@@ -103,7 +103,7 @@ class CosineSimilarity {
 			(void) len;
 			(void) threshold;
 			(void) pos;
-			std::cout<<len<< "   "<<maxLen<<" "<<threshold<<endl;
+			std::cout<<len<< "   "<<maxLen<<" "<<threshold<<std::endl;
 			return maxLen;
 		}
 		
