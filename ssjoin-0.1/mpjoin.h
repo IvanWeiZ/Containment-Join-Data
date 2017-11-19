@@ -228,7 +228,7 @@ void MpJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrategy
 			lastprobesize = reclen;
 			unsigned int maxel = Index::SELF_JOIN ? reclen : Similarity::maxsize(reclen, threshold,maxLen);
 			minoverlapcache.resize(maxel + 1);
-			//std::cout<<reclen<<" "<<maxel<<std::endl;
+			std::cout<<"loop"<<reclen<<" "<<maxel<<std::endl;
 			for(unsigned int i = minsize; i <= maxel; ++i) {
 				minoverlapcache[i] = Similarity::minoverlap(reclen, i, threshold);
 			}
