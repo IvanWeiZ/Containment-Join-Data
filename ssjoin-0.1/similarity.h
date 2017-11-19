@@ -82,14 +82,13 @@ class CosineSimilarity {
 	public:
 		typedef double threshold_type;
 		inline static unsigned int minoverlap(unsigned int len1, unsigned int len2, double threshold) {
-			(void) len2;
 			std::cout<<"len1: "<<len1<<" len2: "<<len2<<std::endl;
 			std::cout<<"minoverlap:"<<(unsigned int)ceil(threshold * len1)<<std::endl;
 			return (unsigned int)ceil(threshold * len1);
 		}
 		
 		inline static unsigned int minsize(unsigned int len, double threshold) {
-			std::cout<<"len:"<<len<<std::endl
+			std::cout<<"len:"<<len<<std::endl;
 			std::cout<<"minsize:"<<(unsigned int)(ceil(threshold * len))<<std::endl;
 			return (unsigned int)(ceil(threshold * len));
 		}
@@ -110,14 +109,13 @@ class DiceSimilarity {
 	public:
 		typedef double threshold_type;
 		inline static unsigned int minoverlap(unsigned int len1, unsigned int len2, double threshold) {
-			(void) len2;
 			std::cout<<"len1: "<<len1<<" len2: "<<len2<<std::endl;
 			std::cout<<"minoverlap:"<<(unsigned int)ceil(threshold * len1)<<std::endl;
 			return (unsigned int)ceil(threshold * len1);
 		}
 		
 		inline static unsigned int minsize(unsigned int len, double threshold) {
-			std::cout<<"len:"<<len<<std::endl
+			std::cout<<"len:"<<len<<std::endl;
 			std::cout<<"minsize:"<<(unsigned int)(ceil(threshold * len))<<std::endl;
 			return (unsigned int)(ceil(threshold * len));
 		}
