@@ -252,7 +252,8 @@ void MpJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrategy
 		// foreach elem in probing prefix
 		for (unsigned recpos = 0; recpos < maxprefix; ++recpos) {
 			unsigned int token = record.tokens[recpos];
-			std::cout<<tokens<<std::endl;
+			std::cout<<"maxprefix:"<<maxprefix<<std::endl;
+			std::cout<<"token:"<<token<<std::endl;
 			// get iterator and do min length filtering at the start
 			typename Index::iterator ilit = index.getiterator(token);
 			statistics.lookups.inc();
