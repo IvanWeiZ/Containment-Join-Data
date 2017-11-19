@@ -246,7 +246,7 @@ void MpJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrategy
 		// foreach elem in probing prefix
 		for (unsigned recpos = 0; recpos < maxprefix; ++recpos) {
 			unsigned int token = record.tokens[recpos];
-			std::cout<<"flag1"<<endl;
+			std::cout<<"flag1"<<std::endl;
 			// get iterator and do min length filtering at the start
 			typename Index::iterator ilit = index.getiterator(token);
 			statistics.lookups.inc();
@@ -256,7 +256,7 @@ void MpJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrategy
 			// First, apply min-length filter
 			while(!ilit.end()) {
 				// record from index
-				std::cout<<"flag2"<<endl;
+				std::cout<<"flag2"<<std::endl;
 
 				IndexedRecord & indexrecord = indexedrecords[ilit->recordid];
 				unsigned int indreclen = indexrecord.tokens.size();
@@ -270,10 +270,10 @@ void MpJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrategy
 
 			// for each record in inverted list 
 			while(!ilit.end() ) {
-				std::cout<<"flag3"<<endl;
+				std::cout<<"flag3"<<std::endl;
 
 				if(!MpJoinIndexingStrategyPolicy::recindchecker::istocheck(recind, ilit->recordid)) {
-								std::cout<<"flag4"<<endl;
+								std::cout<<"flag4"<<std::endl;
 
 					break;
 				}
@@ -284,7 +284,7 @@ void MpJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrategy
 
 				//Length filter 2 - maxlength above tighter length filter (if enabled)
 				if(maxsizechecker.isabove(indreclen)) {
-								std::cout<<"flag5"<<endl;
+								std::cout<<"flag5"<<std::endl;
 
 					break;
 				}
@@ -295,7 +295,7 @@ void MpJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrategy
 				unsigned int indrecpos = ilit->position;
 
 				// Remove if stale element (mpjoin only)
-							std::cout<<"flag6"<<endl;
+							std::cout<<"flag6"<<std::endl;
 
 				if(ilit.mpjoin_removestale1(indexrecord, indrecpos)) {
 					continue;
@@ -305,16 +305,16 @@ void MpJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrategy
 
 				// search for candidate in candidate set
 				CandidateData & candidateData = candidateSet.getCandidateData(ilit->recordid);
-							std::cout<<"flag7"<<endl;
+							std::cout<<"flag7"<<std::endl;
 
 				if(candidateData.count == 0) {
 					// Not seen before
-								std::cout<<"flag8"<<endl;
+								std::cout<<"flag8"<<std::endl;
 
 					unsigned int minoverlap = minoverlapcache[indreclen];
 
 					if(!LengthFilterPolicy::posfilter(reclen, indreclen, recpos, indrecpos, minoverlap)) {
-									std::cout<<"flag9"<<endl;
+									std::cout<<"flag9"<<std::endl;
 
 						// Needs to be done for each index entry, independent of positional filter
 						ilit.mpjoin_updateprefsize(indexrecord, indreclen, minoverlap);
@@ -333,14 +333,14 @@ void MpJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrategy
 					            minoverlap,
 					            reclen, recpos,
 					            indreclen, indrecpos, 1 /*candidateData.count + 1*/ )) {
-						std::cout<<"flag10"<<endl;
+						std::cout<<"flag10"<<std::endl;
 						// Needs to be done for each index entry, independent of positional filter
 						ilit.mpjoin_updateprefsize(indexrecord, indreclen, minoverlap);
 						ilit.next();
 
 						continue;
 					}
-					std::cout<<"flag11"<<endl;
+					std::cout<<"flag11"<<std::endl;
 					candidateSet.addRecord(ilit->recordid);
 					candidateData.minoverlap = minoverlapcache[indreclen];
 
@@ -359,7 +359,7 @@ void MpJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrategy
 		}
 
 		// Candidate set after prefix filter
-		std::cout<<"flag12 "<<candidateSet.size()<<endl;
+		std::cout<<"flag12 "<<candidateSet.size()<<std::endl;
 		statistics.candidatesP1.add(candidateSet.size());
 
 		//Now, verify candidates
