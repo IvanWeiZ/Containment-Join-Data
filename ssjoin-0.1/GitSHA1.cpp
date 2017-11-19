@@ -17,5 +17,5 @@
  */
 
 extern const char g_GIT_SHA1[];
-#define GIT_SHA1 "6b9a3bd4aa7b6698e950dab78807d63c0af98690"
+#define GIT_SHA1 "3750add1095cab3451a0ee7a0a811a8b05858551"
 const char g_GIT_SHA1[] = GIT_SHA1;
