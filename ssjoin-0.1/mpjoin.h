@@ -219,7 +219,7 @@ void MpJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrategy
 		typename Index::ProbeRecord & record = getproberecord(indexedrecords, foreignrecords, recind);
 		unsigned int reclen = record.tokens.size();
 		unsigned int maxLen = indexedrecords[indexedrecords.size() - 1].tokens.size();
-		//std::cout << reclen << "   " << indexedrecords[indexedrecords.size() - 1].tokens.size() << std::endl;
+		std::cout << reclen << "   " << indexedrecords[indexedrecords.size() - 1].tokens.size() << std::endl;
 		//Minimum size of records in index
 		unsigned int minsize = Similarity::minsize(reclen, threshold);
 
@@ -228,7 +228,7 @@ void MpJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrategy
 			lastprobesize = reclen;
 			unsigned int maxel = Index::SELF_JOIN ? reclen : Similarity::maxsize(reclen, threshold,maxLen);
 			minoverlapcache.resize(maxel + 1);
-			std::cout<<reclen<<" "<<maxel<<std::endl;
+			//std::cout<<reclen<<" "<<maxel<<std::endl;
 			for(unsigned int i = minsize; i <= maxel; ++i) {
 				minoverlapcache[i] = Similarity::minoverlap(reclen, i, threshold);
 			}
