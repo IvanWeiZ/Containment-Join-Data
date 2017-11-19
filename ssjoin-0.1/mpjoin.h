@@ -222,10 +222,10 @@ void MpJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrategy
 		unsigned int maxLen = indexedrecords[indexedrecords.size() - 1].tokens.size();
 		//std::cout << reclen << "   " << indexedrecords[indexedrecords.size() - 1].tokens.size() << std::endl;
 		//Minimum size of records in index
-		std::cout << recind << reclen << "   " << indexedrecords[indexedrecords.size() - 1].tokens.size() << std::endl;
-		std::cout << Index::SELF_JOIN <<std::endl;
-		std::cout <<std::endl;
-		std::cout <<std::endl;
+		// std::cout << recind << reclen << "   " << indexedrecords[indexedrecords.size() - 1].tokens.size() << std::endl;
+		// std::cout << Index::SELF_JOIN <<std::endl;
+		// std::cout <<std::endl;
+		// std::cout <<std::endl;
 
 		unsigned int minsize = Similarity::minsize(reclen, threshold);
 
