@@ -242,7 +242,7 @@ void MpJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrategy
 
 		// Compute bitmap for record
 		postprefixfilter.probe_record_compute(record, maxprefix);
-		std::cout<<"flag1"<<std::endl;
+		//std::cout<<"flag1"<<std::endl;
 		// foreach elem in probing prefix
 		for (unsigned recpos = 0; recpos < maxprefix; ++recpos) {
 			unsigned int token = record.tokens[recpos];
@@ -250,13 +250,13 @@ void MpJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrategy
 			// get iterator and do min length filtering at the start
 			typename Index::iterator ilit = index.getiterator(token);
 			statistics.lookups.inc();
-			std::cout<<"flag2"<<std::endl;
+			//std::cout<<"flag2"<<std::endl;
 
 			maxsizechecker.updateprobepos(recpos);
 
 			// First, apply min-length filter
 			while(!ilit.end()) {
-				std::cout<<"flag3"<<std::endl;
+				//std::cout<<"flag3"<<std::endl;
 
 				// record from index
 				IndexedRecord & indexrecord = indexedrecords[ilit->recordid];
@@ -264,23 +264,23 @@ void MpJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrategy
 
 				//Length filter - check whether minsize is satisfied
 				if(ilit.lengthfilter(indreclen, minsize)) {
-					std::cout<<"flag3.5"<<std::endl;
+					//std::cout<<"flag3.5"<<std::endl;
 					break;
 				}
 				//Note: the iterator is increased by lengthfilter
 			}
 
-			std::cout<<"flag4"<<std::endl;
+			//std::cout<<"flag4"<<std::endl;
 
 			// for each record in inverted list 
 			while(!ilit.end() ) {
-				std::cout<<"flag5"<<std::endl;
+				//std::cout<<"flag5"<<std::endl;
 
 				if(!MpJoinIndexingStrategyPolicy::recindchecker::istocheck(recind, ilit->recordid)) {
 					break;
 				}
 
-				std::cout<<"flag6"<<std::endl;
+				//std::cout<<"flag6"<<std::endl;
 
 				// record from index 
 				IndexedRecord & indexrecord = indexedrecords[ilit->recordid];
@@ -290,7 +290,7 @@ void MpJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrategy
 				if(maxsizechecker.isabove(indreclen)) {
 					break;
 				}
-				std::cout<<"flag7"<<std::endl;
+				//std::cout<<"flag7"<<std::endl;
 
 
 				//TODO: Bitmap filter that doesn't let the candidate into the candidate hash map
@@ -298,7 +298,7 @@ void MpJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrategy
 				// position of token in indexrecord
 				unsigned int indrecpos = ilit->position;
 
-				std::cout<<"flag8"<<std::endl;
+				//std::cout<<"flag8"<<std::endl;
 
 				// Remove if stale element (mpjoin only)
 				if(ilit.mpjoin_removestale1(indexrecord, indrecpos)) {
@@ -310,7 +310,7 @@ void MpJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrategy
 				// search for candidate in candidate set
 				CandidateData & candidateData = candidateSet.getCandidateData(ilit->recordid);
 
-				std::cout<<"flag9"<<std::endl;
+				//std::cout<<"flag9"<<std::endl;
 
 				if(candidateData.count == 0) {
 					// Not seen before
@@ -328,7 +328,7 @@ void MpJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrategy
 							ilit.next();
 						}
 
-						std::cout<<"flag10"<<std::endl;
+						//std::cout<<"flag10"<<std::endl;
 
 						continue;
 
@@ -341,7 +341,7 @@ void MpJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrategy
 						// Needs to be done for each index entry, independent of positional filter
 						ilit.mpjoin_updateprefsize(indexrecord, indreclen, minoverlap);
 						ilit.next();
-								std::cout<<"flag11"<<std::endl;
+								//std::cout<<"flag11"<<std::endl;
 
 						continue;
 					}
@@ -349,7 +349,7 @@ void MpJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrategy
 					candidateData.minoverlap = minoverlapcache[indreclen];
 
 				}
-				std::cout<<"flag12"<<std::endl;
+				//std::cout<<"flag12"<<std::endl;
 
 				candidateData.count += 1;
 				candidateData.recpos = recpos;
@@ -362,7 +362,7 @@ void MpJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrategy
 				ilit.next();
 			}
 		}
-		std::cout<<"flag13"<<" "<<candidateSet.size()<<std::endl;
+		////std::cout<<"flag13"<<" "<<candidateSet.size()<<std::endl;
 
 		// Candidate set after prefix filter
 		statistics.candidatesP1.add(candidateSet.size());
