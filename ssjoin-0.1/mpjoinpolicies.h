@@ -21,6 +21,7 @@
 
 #include "inv_index.h"
 
+#include "iostream"
 class PPJoinIndexPolicy {
 
 	public:
@@ -59,12 +60,16 @@ class PPJoinIndexPolicy {
 				IndexListHeader * ilheader;
 
 				// Empty iterator if there are no entries
-				inline iterator() : curelem(0), elemcount(0) {}
+				inline iterator() : curelem(0), elemcount(0) {
+					std::cout<<"empty"<<std::endl;
+				}
 
 				inline iterator(IndexListHeader * ilheader) :
 					ilheader(ilheader) {
 						curelem = ilheader->firsttocheck;
 						elemcount = ilheader->ilist.size();
+						std::cout<<"iterator:"<<curelem<<","<<elemcount<<std::endl;
+
 					}
 
 				inline bool end() const {
