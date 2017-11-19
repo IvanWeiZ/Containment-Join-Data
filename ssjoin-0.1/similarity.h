@@ -20,6 +20,7 @@
  */
 
 #include <cmath>
+#include <iostream>
 
 #define PMAXSIZE_EPS 1e-10
 
@@ -82,16 +83,19 @@ class CosineSimilarity {
 		typedef double threshold_type;
 		inline static unsigned int minoverlap(unsigned int len1, unsigned int len2, double threshold) {
 			(void) len2;
+			std::cout<<len1<<" "<<len2<<" "<<threshold<<endl;
 			return (unsigned int)ceil(threshold * len1);
 		}
 		
 		inline static unsigned int minsize(unsigned int len, double threshold) {
+			std::cout<<len<<" "<<threshold<<endl;
 			return (unsigned int)(ceil(threshold * len));
 		}
 		
 		inline static unsigned int maxsize(unsigned int len, double threshold, unsigned int maxLen) {
 			(void) len;
 			(void) threshold;
+			std::cout<<len<< "   "<<maxLen<<" "<<threshold<<endl;
 			return maxLen;
 		}
 		
@@ -99,7 +103,7 @@ class CosineSimilarity {
 			(void) len;
 			(void) threshold;
 			(void) pos;
-
+			std::cout<<len<< "   "<<maxLen<<" "<<threshold<<endl;
 			return maxLen;
 		}
 		
