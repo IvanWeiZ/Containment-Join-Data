@@ -164,3 +164,4 @@ typedef GenericSimilarity<DiceSimilarity> Dice;
 typedef GenericSimilarity<HammingSimilarity> Hamming;
 
 #endif
+
