@@ -117,7 +117,7 @@ class DiceSimilarity {
 		inline static unsigned int minsize(unsigned int len, double threshold) {
 			std::cout<<"len:"<<len<<std::endl;
 			std::cout<<"minsize:"<<(unsigned int)(ceil(threshold * len))<<std::endl;
-			return (unsigned int)(ceil(threshold * len));
+			return 0;
 		}
 		
 		inline static unsigned int maxsize(unsigned int len, double threshold, unsigned int maxLen) {
