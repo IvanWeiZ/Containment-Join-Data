@@ -90,7 +90,8 @@ class CosineSimilarity {
 		inline static unsigned int minsize(unsigned int len, double threshold) {
 			//std::cout<<"len:"<<len<<std::endl;
 			//std::cout<<"minsize:"<<(unsigned int)(ceil(threshold * len))<<std::endl;
-			return (unsigned int)(ceil(threshold * len));
+			return 1;
+			//return (unsigned int)(ceil(threshold * len));
 		}
 		
 		inline static unsigned int maxsize(unsigned int len, double threshold, unsigned int maxLen) {
