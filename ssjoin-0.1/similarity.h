@@ -90,8 +90,8 @@ class CosineSimilarity {
 		inline static unsigned int minsize(unsigned int len, double threshold) {
 			//std::cout<<"len:"<<len<<std::endl;
 			//std::cout<<"minsize:"<<(unsigned int)(ceil(threshold * len))<<std::endl;
-			return 1;
-			//return (unsigned int)(ceil(threshold * len));
+			//return 1;
+			return (unsigned int)(ceil(threshold * len)-1);
 		}
 		
 		inline static unsigned int maxsize(unsigned int len, double threshold, unsigned int maxLen) {
@@ -123,12 +123,12 @@ class DiceSimilarity {
 		
 		inline static unsigned int maxsize(unsigned int len, double threshold, unsigned int maxLen) {
 			//std::cout<<len<< " max  "<<maxLen<<" threshold "<<threshold<<std::endl;
-			return maxLen;
+			return len;
 		}
 		
 		inline static unsigned int maxsize(unsigned int len, unsigned int pos, double threshold, unsigned int maxLen) {
 			//std::cout<<len<< " pos  max  "<<maxLen<<" threshold "<<threshold<<std::endl;
-			return maxLen;
+			return len;
 		}
 		
 };
