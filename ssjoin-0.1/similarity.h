@@ -30,7 +30,8 @@ class GenericSimilarity {
 		typedef typename Similarity::threshold_type threshold_type;
 
 		inline static unsigned int maxprefix(unsigned int len, threshold_type threshold) {
-			return std::min(len, len - minsize(len, threshold) + 1);
+			//return std::min(len, len - minsize(len, threshold) + 1);
+			return len;
 		}
 
 		inline static unsigned int midprefix(unsigned int len, threshold_type threshold) {
@@ -90,8 +91,8 @@ class CosineSimilarity {
 		inline static unsigned int minsize(unsigned int len, double threshold) {
 			std::cout<<"len:"<<len<<std::endl;
 			std::cout<<"minsize:"<<(unsigned int)(ceil(threshold * len))<<std::endl;
-			return 1;
-			//return (unsigned int)(ceil(threshold * len)-1);
+			//return 1;
+			return (unsigned int)(ceil(threshold * len));
 		}
 		
 		inline static unsigned int maxsize(unsigned int len, double threshold, unsigned int maxLen) {
