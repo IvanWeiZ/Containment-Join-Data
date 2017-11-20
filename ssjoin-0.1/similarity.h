@@ -30,8 +30,9 @@ class GenericSimilarity {
 		typedef typename Similarity::threshold_type threshold_type;
 
 		inline static unsigned int maxprefix(unsigned int len, threshold_type threshold) {
-			//return std::min(len, len - minsize(len, threshold) + 1);
-			return len;
+			return std::min(len, len - minsize(len, threshold) + 1);
+			//std::cout<<"len:"<<len<<std::endl;
+			//return len;
 		}
 
 		inline static unsigned int midprefix(unsigned int len, threshold_type threshold) {

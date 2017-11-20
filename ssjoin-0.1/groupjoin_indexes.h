@@ -245,7 +245,9 @@ class IndexFirstPolicy {
 			}
 
 			inline unsigned int indexPrefixSize(unsigned int reclen, threshold_type threshold) const {
-			 return foreign ? Similarity::maxprefix(reclen, threshold) : Similarity::midprefix(reclen, threshold);
+			return foreign ? reclen : Similarity::midprefix(reclen, threshold);
+
+			 //return foreign ? Similarity::maxprefix(reclen, threshold) : Similarity::midprefix(reclen, threshold);
 			}
 
 			void index_records(GroupIndexedRecords & grouprecords, threshold_type threshold) {
