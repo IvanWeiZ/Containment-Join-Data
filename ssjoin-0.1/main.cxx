@@ -72,6 +72,8 @@ int main(int argc, char ** argv) {
 		("allprefext", "Support all prefix extensions (AdaptJoin)")
 		("suffixfilter", "suffix filter pre-verification")
 		("version", "output version information (git SHA1)")
+		("foreign-linewise", "output version information (git SHA1)")
+
 		;
 
 	po::positional_options_description p;
