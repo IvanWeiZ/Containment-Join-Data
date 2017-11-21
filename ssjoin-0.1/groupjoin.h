@@ -196,7 +196,7 @@ class GroupJoin: public Algorithm {
 template <typename MpJoinSimilarity, typename MpJoinIndexStructurePolicy, class MpJoinIndexingStrategyPolicy, class MpJoinLengthFilterPolicy, typename MpJoinBitfilterPolicy>
 void GroupJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrategyPolicy, MpJoinLengthFilterPolicy, MpJoinBitfilterPolicy>::addrecord(IntRecord & record) {
 	IndexedRecord & rec = inputhandler.addrecord(record);
-	rec.maxprefixsize = Similarity::maxprefix(rec.tokens.size(), threshold);
+	rec.maxprefixsize = Index::SELF_JOIN ? Similarity::maxprefix(rec.tokens.size(), threshold) : rec.tokens.size();
 }
 
 template <typename MpJoinSimilarity, typename MpJoinIndexStructurePolicy, class MpJoinIndexingStrategyPolicy, class MpJoinLengthFilterPolicy, typename MpJoinBitfilterPolicy>
@@ -208,7 +208,7 @@ void GroupJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrat
 template <typename MpJoinSimilarity, typename MpJoinIndexStructurePolicy, class MpJoinIndexingStrategyPolicy, class MpJoinLengthFilterPolicy, typename MpJoinBitfilterPolicy>
 void GroupJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrategyPolicy, MpJoinLengthFilterPolicy, MpJoinBitfilterPolicy>::addrawrecord(IntRecord & record) {
 	IndexedRecord & rec = inputhandler.addrawrecord(record);
-	rec.maxprefixsize = Similarity::maxprefix(rec.tokens.size(), threshold);
+	rec.maxprefixsize = Index::SELF_JOIN ? Similarity::maxprefix(rec.tokens.size(), threshold) : rec.tokens.size();
 }
 
 template <typename MpJoinSimilarity, typename MpJoinIndexStructurePolicy, class MpJoinIndexingStrategyPolicy, class MpJoinLengthFilterPolicy, typename MpJoinBitfilterPolicy>
