@@ -259,8 +259,12 @@ void inline verify_within_group(
 	// check every combination within group if self-join
 	// An Ernst Jandl - Arrow :-)
 	unsigned int groupsize = grecord.groupsize;
+	std::cout<<"groupsize"<<groupsize<<std::endl;
 	if(groupsize != 1) {
 		unsigned int gminoverlap = Similarity::minoverlap(greclen, greclen, threshold);
+		std::cout<<Similarity::maxprefix(greclen, threshold)<<"grecord.maxprefixsize"<<grecord.maxprefixsize<<std::endl;
+
+
 		assert(grecord.maxprefixsize == Similarity::maxprefix(greclen, threshold));
 		RecordType * recpl1 = grecord.firstgrouprecord;
 		while(recpl1 != NULL) {
