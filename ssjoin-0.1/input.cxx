@@ -81,7 +81,7 @@ void add_raw_input<record_add_class>::add_input(Algorithm * algo, const std::str
 			while(!tw.end()) {
 				const char * token = tw.next();
 				unsigned int nmb = atoi(token);
-				//std::cout<<token<<" "<<nmb<<std::endl;
+				std::cout<<token<<" "<<nmb<<std::endl;
 				rec.tokens.push_back(nmb);
 			}
 			//TODO: Error handling
