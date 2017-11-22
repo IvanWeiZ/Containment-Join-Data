@@ -114,7 +114,7 @@ class DiceSimilarity {
 		inline static unsigned int minoverlap(unsigned int len1, unsigned int len2, double threshold) {
 			//std::cout<<"len1: "<<len1<<" len2: "<<len2<<std::endl;
 			//std::cout<<"minoverlap:"<<(unsigned int)ceil(threshold * len1)<<std::endl;
-			return (unsigned int)ceil(threshold * len1);
+			return (unsigned int)ceil(threshold * len2);
 		}
 		
 		inline static unsigned int minsize(unsigned int len, double threshold) {
