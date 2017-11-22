@@ -124,14 +124,14 @@ class DiceSimilarity {
 		}
 		
 		inline static unsigned int maxsize(unsigned int len, double threshold, unsigned int maxLen) {
-			//std::cout<<len<< " max  "<<maxLen<<" threshold "<<threshold<<std::endl;
+			std::cout<<len<< " max  "<<maxLen<<" threshold "<<threshold<<std::endl;
 			//return len;
 			return (unsigned int)((len / threshold));
 
 		}
 		
 		inline static unsigned int maxsize(unsigned int len, unsigned int pos, double threshold, unsigned int maxLen) {
-			//std::cout<<len<< " pos  max  "<<maxLen<<" threshold "<<threshold<<std::endl;
+			std::cout<<len<< " pos  max  "<<maxLen<<" threshold "<<threshold<<std::endl;
 			return (unsigned int)((len-pos) / threshold);
 		}
 		
