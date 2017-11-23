@@ -15,24 +15,24 @@
 
 set(HEAD_HASH)
 
-file(READ "/u/zhengw14/CSC2525-Cont/CSC2525-Project/ssjoin-0.1/CMakeFiles/git-data/HEAD" HEAD_CONTENTS LIMIT 1024)
+file(READ "/u/zhengw14/CSC2525-Contx/CSC2525-Project/ssjoin-0.1/CMakeFiles/git-data/HEAD" HEAD_CONTENTS LIMIT 1024)
 
 string(STRIP "${HEAD_CONTENTS}" HEAD_CONTENTS)
 if(HEAD_CONTENTS MATCHES "ref")
 	# named branch
 	string(REPLACE "ref: " "" HEAD_REF "${HEAD_CONTENTS}")
-	if(EXISTS "/u/zhengw14/CSC2525-Cont/CSC2525-Project/.git/${HEAD_REF}")
-		configure_file("/u/zhengw14/CSC2525-Cont/CSC2525-Project/.git/${HEAD_REF}" "/u/zhengw14/CSC2525-Cont/CSC2525-Project/ssjoin-0.1/CMakeFiles/git-data/head-ref" COPYONLY)
-	elseif(EXISTS "/u/zhengw14/CSC2525-Cont/CSC2525-Project/.git/logs/${HEAD_REF}")
-		configure_file("/u/zhengw14/CSC2525-Cont/CSC2525-Project/.git/logs/${HEAD_REF}" "/u/zhengw14/CSC2525-Cont/CSC2525-Project/ssjoin-0.1/CMakeFiles/git-data/head-ref" COPYONLY)
+	if(EXISTS "/u/zhengw14/CSC2525-Contx/CSC2525-Project/.git/${HEAD_REF}")
+		configure_file("/u/zhengw14/CSC2525-Contx/CSC2525-Project/.git/${HEAD_REF}" "/u/zhengw14/CSC2525-Contx/CSC2525-Project/ssjoin-0.1/CMakeFiles/git-data/head-ref" COPYONLY)
+	elseif(EXISTS "/u/zhengw14/CSC2525-Contx/CSC2525-Project/.git/logs/${HEAD_REF}")
+		configure_file("/u/zhengw14/CSC2525-Contx/CSC2525-Project/.git/logs/${HEAD_REF}" "/u/zhengw14/CSC2525-Contx/CSC2525-Project/ssjoin-0.1/CMakeFiles/git-data/head-ref" COPYONLY)
 		set(HEAD_HASH "${HEAD_REF}")
 	endif()
 else()
 	# detached HEAD
-	configure_file("/u/zhengw14/CSC2525-Cont/CSC2525-Project/.git/HEAD" "/u/zhengw14/CSC2525-Cont/CSC2525-Project/ssjoin-0.1/CMakeFiles/git-data/head-ref" COPYONLY)
+	configure_file("/u/zhengw14/CSC2525-Contx/CSC2525-Project/.git/HEAD" "/u/zhengw14/CSC2525-Contx/CSC2525-Project/ssjoin-0.1/CMakeFiles/git-data/head-ref" COPYONLY)
 endif()
 
 if(NOT HEAD_HASH)
-	file(READ "/u/zhengw14/CSC2525-Cont/CSC2525-Project/ssjoin-0.1/CMakeFiles/git-data/head-ref" HEAD_HASH LIMIT 1024)
+	file(READ "/u/zhengw14/CSC2525-Contx/CSC2525-Project/ssjoin-0.1/CMakeFiles/git-data/head-ref" HEAD_HASH LIMIT 1024)
 	string(STRIP "${HEAD_HASH}" HEAD_HASH)
 endif()

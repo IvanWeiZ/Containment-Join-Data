@@ -196,7 +196,7 @@ class GroupJoin: public Algorithm {
 template <typename MpJoinSimilarity, typename MpJoinIndexStructurePolicy, class MpJoinIndexingStrategyPolicy, class MpJoinLengthFilterPolicy, typename MpJoinBitfilterPolicy>
 void GroupJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrategyPolicy, MpJoinLengthFilterPolicy, MpJoinBitfilterPolicy>::addrecord(IntRecord & record) {
 	IndexedRecord & rec = inputhandler.addrecord(record);
-	rec.maxprefixsize = Index::SELF_JOIN ? Similarity::maxprefix(rec.tokens.size(), threshold) : rec.tokens.size();
+	rec.maxprefixsize = Index::SELF_JOIN ? Similarity::maxprefix(rec.tokens.size(), threshold) : Similarity::midprefix(reclen, threshold);
 }
 
 template <typename MpJoinSimilarity, typename MpJoinIndexStructurePolicy, class MpJoinIndexingStrategyPolicy, class MpJoinLengthFilterPolicy, typename MpJoinBitfilterPolicy>
@@ -208,7 +208,7 @@ void GroupJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrat
 template <typename MpJoinSimilarity, typename MpJoinIndexStructurePolicy, class MpJoinIndexingStrategyPolicy, class MpJoinLengthFilterPolicy, typename MpJoinBitfilterPolicy>
 void GroupJoin<MpJoinSimilarity, MpJoinIndexStructurePolicy, MpJoinIndexingStrategyPolicy, MpJoinLengthFilterPolicy, MpJoinBitfilterPolicy>::addrawrecord(IntRecord & record) {
 	IndexedRecord & rec = inputhandler.addrawrecord(record);
-	rec.maxprefixsize = Index::SELF_JOIN ? Similarity::maxprefix(rec.tokens.size(), threshold) : rec.tokens.size();
+	rec.maxprefixsize = Index::SELF_JOIN ? Similarity::maxprefix(rec.tokens.size(), threshold) : Similarity::midprefix(reclen, threshold);
 }
 
 template <typename MpJoinSimilarity, typename MpJoinIndexStructurePolicy, class MpJoinIndexingStrategyPolicy, class MpJoinLengthFilterPolicy, typename MpJoinBitfilterPolicy>
@@ -261,7 +261,7 @@ void inline verify_within_group(
 	unsigned int groupsize = grecord.groupsize;
 	if(groupsize != 1) {
 		unsigned int gminoverlap = Similarity::minoverlap(greclen, greclen, threshold);
-		assert(grecord.maxprefixsize == Similarity::maxprefix(greclen, threshold));
+		//assert(grecord.maxprefixsize == Similarity::maxprefix(greclen, threshold));
 		RecordType * recpl1 = grecord.firstgrouprecord;
 		while(recpl1 != NULL) {
 			RecordType * recpl2 = recpl1->nextgrouprecord;

@@ -318,7 +318,7 @@ class AdaptJoinIndexFirstPolicy {
 			}
 
 			inline unsigned int indexPrefixSize(unsigned int reclen, threshold_type threshold) const {
-			return foreign ? reclen : Similarity::midprefix(reclen, threshold);
+			return foreign ? Similarity::midprefix(reclen, threshold) : Similarity::midprefix(reclen, threshold);
 
 			 //return foreign ? Similarity::maxprefix(reclen, threshold) : Similarity::midprefix(reclen, threshold);
 			}

@@ -1,4 +1,4 @@
-#ifndef SSJ_INDEXES_H
+s#ifndef SSJ_INDEXES_H
 #define SSJ_INDEXES_H
 
 /* Copyright 2014-2015 Willi Mann
@@ -151,9 +151,9 @@ class IndexFirstPolicy {
 			}
 
 			inline unsigned int indexPrefixSize(unsigned int reclen, threshold_type threshold) const {
-			 return foreign ? reclen : Similarity::midprefix(reclen, threshold);
+			return foreign ? Similarity::midprefix(reclen, threshold-0.1) : Similarity::midprefix(reclen, threshold);
 
-			 //return foreign ? Similarity::maxprefix(reclen, threshold) : Similarity::midprefix(reclen, threshold);
+			//return foreign ? Similarity::maxprefix(reclen, threshold) : Similarity::midprefix(reclen, threshold);
 			}
 
 			void index_records(IndexedRecords & records, threshold_type threshold) {

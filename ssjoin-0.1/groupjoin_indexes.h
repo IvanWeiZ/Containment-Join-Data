@@ -62,8 +62,8 @@ void group_records (GroupRecords & grouprecords, Records & records, typename Sim
 	curgrouprecord->groupsize = 1;
 	curgrouprecord->size = lastrec->tokens.size();
 	curgrouprecord->maxprefixsize = lastrec->maxprefixsize;
-	assert(lastrec->maxprefixsize ==
-			Similarity::maxprefix(curgrouprecord->size, threshold));
+	//assert(lastrec->maxprefixsize ==
+		//	Similarity::maxprefix(curgrouprecord->size, threshold));
 
 	// Loop over records
 	for(unsigned int i = 1; i < records.size(); ++i) {
@@ -86,8 +86,8 @@ void group_records (GroupRecords & grouprecords, Records & records, typename Sim
 			curgrouprecord->groupsize = 1;
 			curgrouprecord->size = lastrec->tokens.size();
 			curgrouprecord->maxprefixsize = lastrec->maxprefixsize;
-			assert(lastrec->maxprefixsize ==
-					Similarity::maxprefix(curgrouprecord->size, threshold));
+			//assert(lastrec->maxprefixsize ==
+					//Similarity::maxprefix(curgrouprecord->size, threshold));
 		}
 	}
 }
@@ -245,7 +245,7 @@ class IndexFirstPolicy {
 			}
 
 			inline unsigned int indexPrefixSize(unsigned int reclen, threshold_type threshold) const {
-			return foreign ? reclen : Similarity::midprefix(reclen, threshold);
+			return foreign ? Similarity::midprefix(reclen, threshold) : Similarity::midprefix(reclen, threshold);
 
 			 //return foreign ? Similarity::maxprefix(reclen, threshold) : Similarity::midprefix(reclen, threshold);
 			}

@@ -1,4 +1,4 @@
-# Install script for directory: /u/zhengw14/CSC2525-Cont/CSC2525-Project/ssjoin-0.1
+# Install script for directory: /u/zhengw14/CSC2525-Contx/CSC2525-Project/ssjoin-0.1
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/u/zhengw14/CSC2525-Cont/CSC2525-Project/ssjoin-0.1/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/u/zhengw14/CSC2525-Contx/CSC2525-Project/ssjoin-0.1/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
