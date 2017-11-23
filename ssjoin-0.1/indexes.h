@@ -1,4 +1,4 @@
-s#ifndef SSJ_INDEXES_H
+#ifndef SSJ_INDEXES_H
 #define SSJ_INDEXES_H
 
 /* Copyright 2014-2015 Willi Mann
