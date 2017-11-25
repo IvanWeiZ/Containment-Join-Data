@@ -120,6 +120,8 @@ void AdaptJoin<Similarity, IndexingStrategy, IndexStructurePolicy>::dojoin(
 		if(lastprobesize != reclen) {
 			lastprobesize = reclen;
 			unsigned int maxel = Index::SELF_JOIN ? reclen : Similarity::maxsize(reclen, threshold, maxLen);
+			std::cout <<"Trying to resize minoverlapcache to "<< (maxel + 1) << std::endl;
+
 			minoverlapcache.resize(maxel + 1);
 			for(unsigned int i = minsize; i <= maxel; ++i) {
 				minoverlapcache[i] = Similarity::minoverlap(reclen, i, threshold);
@@ -143,6 +145,8 @@ void AdaptJoin<Similarity, IndexingStrategy, IndexStructurePolicy>::dojoin(
 #endif
 		
 		// Array to store how often (index) how many indexrecords (value) were seen
+		std::cout <<"Trying to resize occnumberarray to "<< (maxprefix + IndexStructure::MAX_PREFIX_ELL + 1) << std::endl;
+
 		occnumberarray.clear();
 		occnumberarray.resize(maxprefix + IndexStructure::MAX_PREFIX_ELL + 1, 0);
 
@@ -258,6 +262,8 @@ void AdaptJoin<Similarity, IndexingStrategy, IndexStructurePolicy>::dojoin(
 
 
 			if(mergeListsLen <= K) {
+				std::cout <<"Trying to resize randomindices to "<< mergeListsLen <<" K:"<< K << std::endl;
+
 				randomindices.resize(mergeListsLen);
 				std::iota(randomindices.begin(), randomindices.end(), 0);
 			} else {
