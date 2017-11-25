@@ -25,7 +25,7 @@ function writeInfo1 {
 
 mkdir "./output/""$inputname"
 
-declare -a arr=("containment")
+declare -a arr=("containmentx")
 #declare -a arr=("jaccard")
 declare -a excutables=( "set_sim_join_candonly"  "set_sim_join_ext_stat" "set_sim_join_nostat")
 declare -a functions=("ppjoin" "mpjoin" "mpjoin_PEL" "groupjoin" "allpairs" "adaptjoin" "PPjoin+")
@@ -44,10 +44,10 @@ do
 
 			sim="$j"
 
-			if [ "$j" == "containment" ]
+			if [ "$j" == "containmentx" ]
 			then
-				exeLoc="/u/zhengw14/CSC2525-Cont/CSC2525-Project/ssjoin-0.1/"
-				sim="cosine"
+				exeLoc="/u/zhengw14/CSC2525-Contx/CSC2525-Project/ssjoin-0.1/"
+				sim="dice"
 			fi
 
 			output="./output/""$inputname""/""$inputname"-"$function_name"-"$j"-"$threshold"-"$i"
@@ -99,5 +99,3 @@ do
 done
 
 exit 0
-
-
