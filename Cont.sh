@@ -28,7 +28,7 @@ mkdir "./output/""$inputname"
 declare -a arr=("containment")
 #declare -a arr=("jaccard")
 declare -a excutables=( "set_sim_join_candonly"  "set_sim_join_ext_stat" "set_sim_join_nostat")
-declare -a functions=("ppjoin" "mpjoin" "mpjoin_PEL" "groupjoin" "allpairs" "adaptjoin" "PPjoin+")
+declare -a functions=("ppjoin" "mpjoin" "mpjoin_PEL" "groupjoin" "allpairs"  "PPjoin+")
 # "set_sim_join_cycles" "set_sim_join"
 for threshold in 0.95 0.9 0.85 0.8 0.75 0.7 0.6 0.5
 do
