@@ -72,7 +72,7 @@ class AdaptJoinIndexMaxExtStructurePolicy {
 		struct IndexStructure {
 
 			enum {
-				MAX_PREFIX_ELL = 4
+				MAX_PREFIX_ELL = 2
 			};
 
 			typedef typename AdaptJoinCommonMaxExtStructures<Algorithm>::IndexListEntry IndexListEntry;
