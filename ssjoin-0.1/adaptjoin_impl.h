@@ -149,6 +149,7 @@ void AdaptJoin<Similarity, IndexingStrategy, IndexStructurePolicy>::dojoin(
 
 		occnumberarray.clear();
 		occnumberarray.resize(maxprefix + IndexStructure::MAX_PREFIX_ELL + 1, 0);
+		std::cout <<"Trying to resize finished"<< (maxprefix + IndexStructure::MAX_PREFIX_ELL + 1) << std::endl;
 
 		//the sum of the lengths of all the lists that have been merged
 		unsigned int curListsLenSum = 0;
