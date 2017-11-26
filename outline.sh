@@ -44,9 +44,14 @@ time ./scriptdice.sh ~/data/orkut-userswithgroups-dedup-raw90.txt ~/data/orkut-u
 time ./cont.sh ~/canada_us_uk.ssjoin-join.txt ~/canada_us_uk.ssjoin-sample10000.txt OPEN-CONT
 time ./dice.sh ~/canada_us_uk.ssjoin-join.txt ~/canada_us_uk.ssjoin-sample10000.txt OPEN-CONT-XX
 
+time ./cont.sh ~/data/wikidata_white_upper_raw90.txt ~/data/wikidata_white_upper_raw10.txt WIKI-CONT
+time ./dice.sh ~/data/wikidata_white_upper_raw90.txt ~/data/wikidata_white_upper_raw10.txt WIKI-CONT-XX
+
 
 /u/zhengw14/CSC2525-Cont/CSC2525-Project/ssjoin-0.1/set_sim_join_candonly --threshold 0.95 --cosine --algorithm adaptjoin --timings --statistics --foreign-linewise --foreign-input /u/zhengw14/canada_us_uk.ssjoin-sample10000.txt --input /u/zhengw14/canada_us_uk.ssjoin-join.txt
 
 /u/zhengw14/CSC2525-Contx/CSC2525-Project/ssjoin-0.1/set_sim_join_ext_stat --threshold 0.6 --dice --algorithm ppjoin --timings --statistics --foreign-linewise --foreign-input /u/zhengw14/canada_us_uk.ssjoin-sample10000.txt --input /u/zhengw14/canada_us_uk.ssjoin-join.txt
 
 /u/zhengw14/CSC2525-Cont/CSC2525-Project/ssjoin-0.1/set_sim_join_ext_stat --threshold 0.6 --cosine --algorithm ppjoin --timings --statistics --foreign-linewise --foreign-input /u/zhengw14/canada_us_uk.ssjoin-sample10000.txt --input /u/zhengw14/canada_us_uk.ssjoin-join.txt
+
+/u/zhengw14/CSC2525-Cont/CSC2525-Project/ssjoin-0.1/set_sim_join_ext_stat --threshold 0.6 --cosine --algorithm ppjoin --timings --statistics --foreign-linewise --foreign-input ~/data/wikidata_white_upper_raw10.txt --input ~/data/wikidata_white_upper_raw90.txt
