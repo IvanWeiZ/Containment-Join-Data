@@ -114,13 +114,13 @@ void AdaptJoin<Similarity, IndexingStrategy, IndexStructurePolicy>::dojoin(
 		unsigned int maxprefix = Similarity::maxprefix(reclen, threshold);
 		unsigned int minsize = Similarity::minsize(reclen, threshold);
 
-		std::cout << reclen << "   " << indexedrecords[indexedrecords.size() - 1].tokens.size() << std::endl;
+		//std::cout << reclen << "   " << indexedrecords[indexedrecords.size() - 1].tokens.size() << std::endl;
 
 		// Check whether cache is to renew
 		if(lastprobesize != reclen) {
 			lastprobesize = reclen;
 			unsigned int maxel = Index::SELF_JOIN ? reclen : Similarity::maxsize(reclen, threshold, maxLen);
-			std::cout <<"Trying to resize minoverlapcache to "<< (maxel + 1) << std::endl;
+			//std::cout <<"Trying to resize minoverlapcache to "<< (maxel + 1) << std::endl;
 
 			minoverlapcache.resize(maxel + 1);
 			for(unsigned int i = minsize; i <= maxel; ++i) {
@@ -145,11 +145,11 @@ void AdaptJoin<Similarity, IndexingStrategy, IndexStructurePolicy>::dojoin(
 #endif
 		
 		// Array to store how often (index) how many indexrecords (value) were seen
-		std::cout <<"Trying to resize occnumberarray to "<< (maxprefix + IndexStructure::MAX_PREFIX_ELL + 1) << std::endl;
+		//std::cout <<"Trying to resize occnumberarray to "<< (maxprefix + IndexStructure::MAX_PREFIX_ELL + 1) << std::endl;
 
 		occnumberarray.clear();
 		occnumberarray.resize(maxprefix + IndexStructure::MAX_PREFIX_ELL + 1, 0);
-		std::cout <<"Trying to resize finished"<< (maxprefix + IndexStructure::MAX_PREFIX_ELL + 1) << std::endl;
+		//std::cout <<"Trying to resize finished"<< (maxprefix + IndexStructure::MAX_PREFIX_ELL + 1) << std::endl;
 
 		//the sum of the lengths of all the lists that have been merged
 		unsigned int curListsLenSum = 0;
@@ -263,7 +263,7 @@ void AdaptJoin<Similarity, IndexingStrategy, IndexStructurePolicy>::dojoin(
 
 
 			if(mergeListsLen <= K) {
-				std::cout <<"Trying to resize randomindices to "<< mergeListsLen <<" K:"<< K << std::endl;
+				//std::cout <<"Trying to resize randomindices to "<< mergeListsLen <<" K:"<< K << std::endl;
 
 				randomindices.resize(mergeListsLen);
 				std::iota(randomindices.begin(), randomindices.end(), 0);
