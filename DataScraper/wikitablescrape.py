@@ -3,6 +3,7 @@
 import csv
 import os
 import platform
+from pathlib import Path
 
 from bs4 import BeautifulSoup
 import requests
@@ -33,9 +34,11 @@ def scrape(url,output_name,filename=None):
     #print(wikitables)
     if len(wikitables)>0:
         try:
-            os.mkdir("./outputTables/"+output_name)
+            outdir = Path("./outputTables/" + output_name)
+            outdir.mkdir(parents=True, exist_ok=True)
         except Exception:  # Generic OS Error
-            pass 
+            sys.stderr.write("Cannot create output directory")
+            pass
     else:
         return
     #print(wikitables)
@@ -80,7 +83,7 @@ def write_html_table_to_csv(table, writer):
     saved_rowspans = []
     for row in table.findAll("tr"):
         cells = row.findAll(["th", "td"])
-
+        #print("CELLS IN ROW: ", len(cells))
         # If the first row, use it to define width of table
         if len(saved_rowspans) == 0:
             saved_rowspans = [None for _ in cells]
@@ -99,15 +102,22 @@ def write_html_table_to_csv(table, writer):
 
         # If an element with rowspan, save it for future cells
         for index, cell in enumerate(cells):
+            #print("CHECKING: ", index, len(saved_rowspans))
             if cell.has_attr("rowspan"):
-                rowspan_data = {
-                    'rows_left': int(cell["rowspan"]),
-                    'value': cell,
-                }
+                try:
+                    rowspan_data = {
+                        'rows_left': int(cell["rowspan"]),
+                        'value': cell,
+                    }
+                except:
+                    sys.stderr.write("\nROWSPAN NOT INT\n")
+                    sys.stderr.write(str(cell))
+                    continue
+
                 try:
                     saved_rowspans[index] = rowspan_data
                 except:
-                    print("error:",cell,rowspan_data,len(saved_rowspans),index)
+                    #print("error:",cell,rowspan_data,len(saved_rowspans),index)
 
         if cells:
             # Clean the data of references and unusual whitespace
