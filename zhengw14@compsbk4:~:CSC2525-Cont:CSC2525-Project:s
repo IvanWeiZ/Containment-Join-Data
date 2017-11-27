@@ -1,0 +1,64 @@
+zhengw14@compsbk4:~/CSC2525-Cont/CSC2525-Project/ssjoin-0.1$ /u/zhengw14/CSC2525-Cont/CSC2525-Project/ssjoin-0.1/set_sim_join_ext_stat --threshold 0.95 --cosine --algorithm adaptjoin --timings --statistics --foreign-linewise --foreign-input /u/zhengw14/canada_us_uk.ssjoin-sample10000.txt --input /u/zhengw14/canada_us_uk.ssjoin-join.txt
+Reading Input ...
+running algorithm adaptjoin with threshold 0.95
+*** Error in `/u/zhengw14/CSC2525-Cont/CSC2525-Project/ssjoin-0.1/set_sim_join_ext_stat': free(): invalid next size (fast): 0x000000051bdec550 ***
+======= Backtrace: =========
+/lib/x86_64-linux-gnu/libc.so.6(+0x777e5)[0x7f4b467a17e5]
+/lib/x86_64-linux-gnu/libc.so.6(+0x8037a)[0x7f4b467aa37a]
+/lib/x86_64-linux-gnu/libc.so.6(cfree+0x4c)[0x7f4b467ae53c]
+/u/zhengw14/CSC2525-Cont/CSC2525-Project/ssjoin-0.1/set_sim_join_ext_stat(_ZNSt6vectorIjSaIjEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPjS1_EEmRKj+0x5aa)[0x630a2a]
+/u/zhengw14/CSC2525-Cont/CSC2525-Project/ssjoin-0.1/set_sim_join_ext_stat(_ZNSt6vectorIjSaIjEE6resizeEmRKj+0x3d)[0x630bbd]
+/u/zhengw14/CSC2525-Cont/CSC2525-Project/ssjoin-0.1/set_sim_join_ext_stat(_ZN9AdaptJoinI17GenericSimilarityI16CosineSimilarityE25AdaptJoinIndexFirstPolicyILb1EE35AdaptJoinIndexMaxExtStructurePolicyI14InvIndexVectorEE6dojoinEP12c+0x24d)[0x63345d]
+/u/zhengw14/CSC2525-Cont/CSC2525-Project/ssjoin-0.1/set_sim_join_ext_stat(main+0xd22)[0x5ffe32]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf0)[0x7f4b4674a830]
+/u/zhengw14/CSC2525-Cont/CSC2525-Project/ssjoin-0.1/set_sim_join_ext_stat(_start+0x29)[0x600e69]
+======= Memory map: ========
+00400000-009b5000 r-xp 00000000 00:aa 248593                             /h/285/zhengw14/CSC2525-Cont/CSC2525-Project/ssjoin-0.1/set_sim_join_ext_stat
+00bb4000-00bb5000 r--p 005b4000 00:aa 248593                             /h/285/zhengw14/CSC2525-Cont/CSC2525-Project/ssjoin-0.1/set_sim_join_ext_stat
+00bb5000-00bb6000 rw-p 005b5000 00:aa 248593                             /h/285/zhengw14/CSC2525-Cont/CSC2525-Project/ssjoin-0.1/set_sim_join_ext_stat
+00c90000-74dc64000 rw-p 00000000 00:00 0                                 [heap]
+7f41be2ed000-7f4aefe76000 rw-p 00000000 00:00 0 
+7f4af8000000-7f4af8021000 rw-p 00000000 00:00 0 
+7f4af8021000-7f4afc000000 ---p 00000000 00:00 0 
+7f4afda41000-7f4b1ae7e000 rw-p 00000000 00:00 0 
+7f4b1e67e000-7f4b2267f000 rw-p 00000000 00:00 0 
+7f4b24680000-7f4b3a686000 rw-p 00000000 00:00 0 
+7f4b3ab08000-7f4b40b0b000 rw-p 00000000 00:00 0 
+7f4b4250b000-7f4b4650d000 rw-p 00000000 00:00 0 
+7f4b4650d000-7f4b46525000 r-xp 00000000 08:02 9703596                    /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f4b46525000-7f4b46724000 ---p 00018000 08:02 9703596                    /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f4b46724000-7f4b46725000 r--p 00017000 08:02 9703596                    /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f4b46725000-7f4b46726000 rw-p 00018000 08:02 9703596                    /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f4b46726000-7f4b4672a000 rw-p 00000000 00:00 0 
+7f4b4672a000-7f4b468ea000 r-xp 00000000 08:02 9703613                    /lib/x86_64-linux-gnu/libc-2.23.so
+7f4b468ea000-7f4b46aea000 ---p 001c0000 08:02 9703613                    /lib/x86_64-linux-gnu/libc-2.23.so
+7f4b46aea000-7f4b46aee000 r--p 001c0000 08:02 9703613                    /lib/x86_64-linux-gnu/libc-2.23.so
+7f4b46aee000-7f4b46af0000 rw-p 001c4000 08:02 9703613                    /lib/x86_64-linux-gnu/libc-2.23.so
+7f4b46af0000-7f4b46af4000 rw-p 00000000 00:00 0 
+7f4b46af4000-7f4b46b0a000 r-xp 00000000 08:02 9699858                    /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f4b46b0a000-7f4b46d09000 ---p 00016000 08:02 9699858                    /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f4b46d09000-7f4b46d0a000 rw-p 00015000 08:02 9699858                    /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f4b46d0a000-7f4b46e12000 r-xp 00000000 08:02 9703608                    /lib/x86_64-linux-gnu/libm-2.23.so
+7f4b46e12000-7f4b47011000 ---p 00108000 08:02 9703608                    /lib/x86_64-linux-gnu/libm-2.23.so
+7f4b47011000-7f4b47012000 r--p 00107000 08:02 9703608                    /lib/x86_64-linux-gnu/libm-2.23.so
+7f4b47012000-7f4b47013000 rw-p 00108000 08:02 9703608                    /lib/x86_64-linux-gnu/libm-2.23.so
+7f4b47013000-7f4b47185000 r-xp 00000000 08:02 29884455                   /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+7f4b47185000-7f4b47385000 ---p 00172000 08:02 29884455                   /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+7f4b47385000-7f4b4738f000 r--p 00172000 08:02 29884455                   /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+7f4b4738f000-7f4b47391000 rw-p 0017c000 08:02 29884455                   /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+7f4b47391000-7f4b47395000 rw-p 00000000 00:00 0 
+7f4b47395000-7f4b4740f000 r-xp 00000000 08:02 29897356                   /usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.58.0
+7f4b4740f000-7f4b4760f000 ---p 0007a000 08:02 29897356                   /usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.58.0
+7f4b4760f000-7f4b47612000 r--p 0007a000 08:02 29897356                   /usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.58.0
+7f4b47612000-7f4b47613000 rw-p 0007d000 08:02 29897356                   /usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.58.0
+7f4b47613000-7f4b47639000 r-xp 00000000 08:02 9703591                    /lib/x86_64-linux-gnu/ld-2.23.so
+7f4b477f6000-7f4b477fc000 rw-p 00000000 00:00 0 
+7f4b47835000-7f4b47838000 rw-p 00000000 00:00 0 
+7f4b47838000-7f4b47839000 r--p 00025000 08:02 9703591                    /lib/x86_64-linux-gnu/ld-2.23.so
+7f4b47839000-7f4b4783a000 rw-p 00026000 08:02 9703591                    /lib/x86_64-linux-gnu/ld-2.23.so
+7f4b4783a000-7f4b4783b000 rw-p 00000000 00:00 0 
+7ffe9d2a2000-7ffe9d2c3000 rw-p 00000000 00:00 0                          [stack]
+7ffe9d332000-7ffe9d334000 r--p 00000000 00:00 0                          [vvar]
+7ffe9d334000-7ffe9d336000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+Aborted (core dumped)

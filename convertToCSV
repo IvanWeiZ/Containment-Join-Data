@@ -1,0 +1,68 @@
+#!/bin/bash
+
+find ./AOL-CONT-XX -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_AOL-CONT-XX.csv
+
+find ./BMS-CONT -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_BMS-CONT.csv
+
+find ./BMS-CONT-XX -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_BMS-CONT-XX.csv
+
+find ./DBLP-2q-CONT -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_DBLP-2q-CONT.csv
+
+find ./DBLP-2q-CONT-XX -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_DBLP-2q-CONT-XX.csv
+
+find ./ENRON-CONT -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_ENRON-CONT.csv
+
+find ./ENRON-CONT-XX -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_ENRON-CONT-XX.csv
+
+find ./KOSARAK-CONT -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_KOSARAK-CONT.csv
+
+find ./KOSARAK-CONT-XX -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_KOSARAK-CONT-XX.csv
+
+find ./LIVE-CONT -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_LIVE-CONT.csv
+
+find ./LIVE-CONT-XX -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_LIVE-CONT-XX.csv
+
+find ./OPEN-CONT  -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_OPEN-CONT.csv
+
+find ./OPEN-CONT-XX -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_OPEN-CONT-XX.csv
+
+find ./OPEN-CONT-nodedup -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_OPEN-CONT-nodedup.csv
+
+find ./OPEN-CONT-XX-nodedup -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_OPEN-CONT-XX-nodedup.csv
+
+find ./ORKUT-CONT -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_ORKUT-CONT.csv
+
+find ./UNIF-CONT -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_UNIF-CONT.csv
+
+find ./UNIF-CONT-XX -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_UNIF-CONT-XX.csv
+
+find ./ZIPF-CONT -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_ZIPF-CONT.csv
+
+find ./ZIPF-CONT1-XX -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_ZIPF-CONT1-XX.csv
+
+
+
+
+
+
+

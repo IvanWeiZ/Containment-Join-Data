@@ -1,5 +1,16 @@
 #!/bin/bash
 
+
+
+/u/zhengw14/CSC2525-Cont/CSC2525-Project/ssjoin-0.1/set_sim_join_candonly --threshold 0.95 --cosine --algorithm adaptjoin --timings --statistics --foreign-linewise --foreign-input /u/zhengw14/canada_us_uk.ssjoin-sample10000.txt --input /u/zhengw14/canada_us_uk.ssjoin-join.txt
+
+/u/zhengw14/CSC2525-Contx/CSC2525-Project/ssjoin-0.1/set_sim_join_ext_stat --threshold 0.6 --dice --algorithm ppjoin --timings --statistics --foreign-linewise --foreign-input /u/zhengw14/canada_us_uk.ssjoin-sample10000.txt --input /u/zhengw14/canada_us_uk.ssjoin-join.txt
+
+/u/zhengw14/CSC2525-Cont/CSC2525-Project/ssjoin-0.1/set_sim_join_ext_stat --threshold 0.6 --cosine --algorithm ppjoin --timings --statistics --foreign-linewise --foreign-input /u/zhengw14/canada_us_uk.ssjoin-sample10000.txt --input /u/zhengw14/canada_us_uk.ssjoin-join.txt
+
+/u/zhengw14/CSC2525-Cont/CSC2525-Project/ssjoin-0.1/set_sim_join_ext_stat --threshold 0.6 --cosine --algorithm ppjoin --timings --statistics --foreign-linewise --foreign-input ~/data/wikidata_white_upper_raw10.txt --input ~/data/wikidata_white_upper_raw90.txt
+
+
 #finish
 ./script.sh ~/data/zipf-s100k-ss50-u100k-a1-dedup-raw.txt ZIPF
 ./script.sh ~/data/uniform-s100000-ss10-u50-dedup-raw.txt  UNIF. 
@@ -41,17 +52,33 @@ time ./scriptdice.sh ~/data/livejournal-userswithgroups-dedup-raw90.txt ~/data/l
 time ./scriptdice.sh ~/data/orkut-userswithgroups-dedup-raw90.txt ~/data/orkut-userswithgroups-dedup-raw10.txt ORKUT-CONT-XX
 
 
-time ./cont.sh ~/canada_us_uk.ssjoin-join.txt ~/canada_us_uk.ssjoin-sample10000.txt OPEN-CONT
-time ./dice.sh ~/canada_us_uk.ssjoin-join.txt ~/canada_us_uk.ssjoin-sample10000.txt OPEN-CONT-XX
+time ./cont.sh ~/canada_us_uk.ssjoin_dedup-join.txt ~/canada_us_uk.ssjoin_dedup-sample10000.txt OPEN-CONT
+time ./dice.sh ~/canada_us_uk.ssjoin_dedup-join.txt ~/canada_us_uk.ssjoin_dedup-sample10000.txt OPEN-CONT-XX
 
-time ./cont.sh ~/data/wikidata_white_upper_raw90.txt ~/data/wikidata_white_upper_raw10.txt WIKI-CONT
-time ./dice.sh ~/data/wikidata_white_upper_raw90.txt ~/data/wikidata_white_upper_raw10.txt WIKI-CONT-XX
+time ./cont.sh ~/data/wikidata_white_upper_dedup_raw90.txt ~/data/wikidata_white_upper_dedup_raw10.txt WIKI-CONT
+time ./dice.sh ~/data/wikidata_white_upper_dedup_raw90.txt ~/data/wikidata_white_upper_dedup_raw10.txt WIKI-CONT-XX
 
 
-/u/zhengw14/CSC2525-Cont/CSC2525-Project/ssjoin-0.1/set_sim_join_candonly --threshold 0.95 --cosine --algorithm adaptjoin --timings --statistics --foreign-linewise --foreign-input /u/zhengw14/canada_us_uk.ssjoin-sample10000.txt --input /u/zhengw14/canada_us_uk.ssjoin-join.txt
+##还需要跑的
+ # wikidata and KOSARAK  without removing deplicate lists
+time ./diceAdapt.sh ~/data/wikidata_white_upper_raw90.txt ~/data/wikidata_white_upper_raw10.txt WIKI-CONT-XX
 
-/u/zhengw14/CSC2525-Contx/CSC2525-Project/ssjoin-0.1/set_sim_join_ext_stat --threshold 0.6 --dice --algorithm ppjoin --timings --statistics --foreign-linewise --foreign-input /u/zhengw14/canada_us_uk.ssjoin-sample10000.txt --input /u/zhengw14/canada_us_uk.ssjoin-join.txt
+#!/bin/bash
+# memory usage on ENRON. wikidata and opendata
+time ./cont08Mem.sh ~/data/enron-adaptjoin-paper-dedup-dedupitems-raw90.txt ~/data/enron-adaptjoin-paper-dedup-dedupitems-raw10.txt ENRON-CONT-MEM
+time ./cont08Mem.sh ~/data/wikidata_white_upper_dedup_raw90.txt ~/data/wikidata_white_upper_dedup_raw10.txt WIKI-CONT-MEM
+time ./cont08Mem.sh ~/canada_us_uk.ssjoin_dedup-join.txt ~/canada_us_uk.ssjoin_dedup-sample10000.txt OPEN-CONT-MEM
 
-/u/zhengw14/CSC2525-Cont/CSC2525-Project/ssjoin-0.1/set_sim_join_ext_stat --threshold 0.6 --cosine --algorithm ppjoin --timings --statistics --foreign-linewise --foreign-input /u/zhengw14/canada_us_uk.ssjoin-sample10000.txt --input /u/zhengw14/canada_us_uk.ssjoin-join.txt
+time ./contAdapt.sh ~/data/wikidata_white_upper_raw90.txt ~/data/wikidata_white_upper_raw10.txt WIKI-CONT
+time ./cont08.sh ~/data/wikidata_white_upper_raw90.txt ~/data/wikidata_white_upper_raw10.txt WIKI-CONT-nodedup
+time ./cont08.sh ~/data/kosarak-raw90.txt.txt ~/data/kosarak-raw10.txt KOSARAK-CONT-nodedup
+time ./jaccard08.sh ~/canada_us_uk.ssjoin_dedup-join.txt ~/canada_us_uk.ssjoin_dedup-sample10000.txt OPEN-Jaccard08
 
-/u/zhengw14/CSC2525-Cont/CSC2525-Project/ssjoin-0.1/set_sim_join_ext_stat --threshold 0.6 --cosine --algorithm ppjoin --timings --statistics --foreign-linewise --foreign-input ~/data/wikidata_white_upper_raw10.txt --input ~/data/wikidata_white_upper_raw90.txt
+# time ./dice08.sh ~/data/wikidata_white_upper_raw90.txt ~/data/wikidata_white_upper_raw10.txt WIKI-CONT-XX-nodedup
+# time ./dice08.sh ~/data/kosarak-raw90.txt.txt ~/data/kosarak-raw10.txt KOSARAK-CONT-XX-nodedup
+
+# lenshuffle on wikidata and opendata and AOL
+time ./cont08.sh ~/data/wikidata_white_upper_dedup_lenshuf_raw90.txt ~/data/wikidata_white_upper_dedup_lenshuf_raw10.txt WIKI-CONT-lenshuf
+time ./cont08.sh ~/canada_us_uk.ssjoin_dedup_lenshuf-join.txt ~/canada_us_uk.ssjoin_dedup_lenshuf-sample10000.txt OPEN-CONT-lenshuf
+time ./cont08.sh ~/data/AOL-user-ct-collection/aol-data-white-dedup-lenshuf-raw90.txt ~/data/AOL-user-ct-collection/aol-data-white-dedup-lenshuf-raw10.txt AOL-CONT-lenshuf
+
