@@ -53,7 +53,7 @@ class AdaptJoinCommonMaxExtStructures {
 
 			void recordadd(unsigned int prefixnmb, unsigned int recordid) {
 				assert(prefixnmb < Algorithm::IndexStructure::MAX_PREFIX_ELL);
-				std::cout<<"record added "<<prefixnmb<<std::endl;
+				//std::cout<<"record added "<<prefixnmb<<std::endl;
 				indexlists[prefixnmb].indexlist.push_back(IndexListEntry(recordid));
 			}
 
@@ -89,7 +89,7 @@ class AdaptJoinIndexMaxExtStructurePolicy {
 
 
 			inline void addtoken(unsigned int token, unsigned int recind, unsigned int recpos, unsigned int prefixext) {
-				std::cout<<"added token"<<prefixext<<std::endl;
+				//std::cout<<"added token"<<prefixext<<std::endl;
 				typename Index::value_type & ilhead = index.get_list_create(token);
 				ilhead.recordadd(prefixext, recind);
 			}
