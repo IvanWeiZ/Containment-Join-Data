@@ -58,6 +58,9 @@ class AdaptJoinCommonMaxExtStructures {
 			}
 
 			IndexList * getlist(unsigned int prefixnmb) {
+				std::cout<<"try to get "<<prefixnmb<<std::endl;
+				std::cout<<"try to get "<<indexlists[prefixnmb]<<std::endl;
+
 				return &indexlists[prefixnmb];
 			}
 
