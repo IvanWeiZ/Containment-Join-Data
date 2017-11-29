@@ -239,7 +239,7 @@ void AdaptJoin<Similarity, IndexingStrategy, IndexStructurePolicy>::dojoin(
 					std::cout<<"try to get "<< curPreExt + 1<<std::endl;
 					continue;
 				}
-				std::cout<<"try to get success"<< curPreExt + 1<<std::endl;
+				std::cout<<"try to get success"<< curPreExt + 1<<" "<<il->indexlist.end()<<std::endl;
 				mergeLists.push_back(IndexListCollEntry(il, curPreExt + 1, rp2));
 				applyminsizefilter<IndexList, IndexedRecords>(indexedrecords, *il, minsize);
 				mergeListsLen += il->indexlist.size() - il->start;
