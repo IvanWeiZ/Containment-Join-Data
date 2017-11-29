@@ -93,8 +93,11 @@ class AdaptJoinIndexMaxExtStructurePolicy {
 			inline IndexList * getindexlist(unsigned int token, unsigned int prefixext) {
 				typename Index::value_type * ilhead = index.get_list(token);
 				if( ilhead != NULL ) {
+					std::cout<<"Index list not null"<<prefixext<<std::endl;
 					return ilhead->getlist(prefixext);
 				} else {
+					std::cout<<"Index list is null!"<<prefixext<<std::endl;
+
 					return NULL;
 				}
 			}
