@@ -86,6 +86,7 @@ class AdaptJoinIndexMaxExtStructurePolicy {
 
 
 			inline void addtoken(unsigned int token, unsigned int recind, unsigned int recpos, unsigned int prefixext) {
+				std::cout<<"added token"<<prefixext<<std::endl;
 				typename Index::value_type & ilhead = index.get_list_create(token);
 				ilhead.recordadd(prefixext, recind);
 			}
