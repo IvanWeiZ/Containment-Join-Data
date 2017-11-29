@@ -339,7 +339,7 @@ void AdaptJoin<Similarity, IndexingStrategy, IndexStructurePolicy>::dojoin(
 			// Note: The estimation does not really match what we implement
 			// since we don't need binary search to find the lists. 
 			unsigned int estCost2ndNextPref = 2 * lstMrg2ndNextPref + (unsigned int)(K * log(lstMrg2ndNextPref)) + K;
-			
+			std::cout<<"curprefext:"<<curPreExt<<std::endl;
 			if( costCurPref > costNextPref + estCost2ndNextPref && curPreExt < IndexStructure::MAX_PREFIX_ELL - 1) {
 				moreThanEll -= occnumberarray[curPreExt + 2] - occnumberarray[curPreExt + 3];
 				exactlyEll += occnumberarray[curPreExt + 2] - occnumberarray[curPreExt + 3];
@@ -349,6 +349,7 @@ void AdaptJoin<Similarity, IndexingStrategy, IndexStructurePolicy>::dojoin(
 				assert(moreThanEll + exactlyEll + lessThanEll == candidateSet.size());
 
 				curPreExt += 1;
+				std::cout<<"curprefextifstatement:"<<curPreExt<<std::endl;
 				mergeLists.swap(curLists);
 			} else {
 				break;
