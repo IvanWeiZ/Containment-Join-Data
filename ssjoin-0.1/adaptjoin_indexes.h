@@ -336,6 +336,7 @@ class AdaptJoinIndexFirstPolicy {
 					}
 					
 					for(unsigned int i = 1; recpos < record.tokens.size() && i < Algorithm::IndexStructure::MAX_PREFIX_ELL; ++recpos, ++i) {
+						
 						unsigned int token = record.tokens[recpos];
 						index.addtoken(token, recind, recpos, i);
 					}

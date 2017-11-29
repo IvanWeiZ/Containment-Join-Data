@@ -69,9 +69,9 @@ time ./cont08Mem.sh ~/data/enron-adaptjoin-paper-dedup-dedupitems-raw90.txt ~/da
 time ./cont08Mem.sh ~/data/wikidata_white_upper_dedup_raw90.txt ~/data/wikidata_white_upper_dedup_raw10.txt WIKI-CONT-MEM
 time ./cont08Mem.sh ~/canada_us_uk.ssjoin_dedup-join.txt ~/canada_us_uk.ssjoin_dedup-sample10000.txt OPEN-CONT-MEM
 
-time ./contAdapt.sh ~/data/wikidata_white_upper_raw90.txt ~/data/wikidata_white_upper_raw10.txt WIKI-CONT
+time ./contAdapt.sh ~/data/wikidata_white_upper_dedup_raw90.txt ~/data/wikidata_white_upper_dedup_raw10.txt WIKI-CONT
 time ./cont08.sh ~/data/wikidata_white_upper_raw90.txt ~/data/wikidata_white_upper_raw10.txt WIKI-CONT-nodedup
-time ./cont08.sh ~/data/kosarak-raw90.txt.txt ~/data/kosarak-raw10.txt KOSARAK-CONT-nodedup
+time ./cont08.sh ~/data/kosarak-raw90.txt ~/data/kosarak-raw10.txt KOSARAK-CONT-nodedup
 time ./jaccard08.sh ~/canada_us_uk.ssjoin_dedup-join.txt ~/canada_us_uk.ssjoin_dedup-sample10000.txt OPEN-Jaccard08
 
 # time ./dice08.sh ~/data/wikidata_white_upper_raw90.txt ~/data/wikidata_white_upper_raw10.txt WIKI-CONT-XX-nodedup

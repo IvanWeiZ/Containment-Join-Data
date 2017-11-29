@@ -1,5 +1,48 @@
 #!/bin/bash
 
+
+WIKI-CONT
+WIKI-CONT-nodedup
+KOSARAK-CONT-nodedup
+OPEN-Jaccard08
+WIKI-CONT-lenshuf
+OPEN-CONT-lenshuf
+AOL-CONT-lenshuf
+WIKI-CONT
+OPEN-JACCARD-DEDUP
+
+find ./WIKI-CONT -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_WIKI-CONT.csv
+
+find ./WIKI-CONT-nodedup -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_WIKI-CONT-nodedup.csv
+
+find ./KOSARAK-CONT-nodedup -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_KOSARAK-CONT-nodedup.csv
+
+find ./OPEN-Jaccard08 -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_OPEN-Jaccard08.csv
+
+find ./WIKI-CONT-lenshuf -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_WIKI-CONT-lenshuf.csv
+
+find ./OPEN-CONT-lenshuf -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_OPEN-CONT-lenshuf.csv
+
+find ./AOL-CONT-lenshuf -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_AOL-CONT-lenshuf.csv
+
+find ./WIKI-CONT -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_WIKI-CONT.csv
+
+find ./OPEN-JACCARD-DEDUP -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_OPEN-JACCARD-DEDUP.csv
+
+find ./OPEN-CONT -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
+mv output.csv output_OPEN_CONT.csv
+
+
+
 find ./AOL-CONT-XX -type f -print0 | xargs -0 -n100 -P0  python3 convertOutput.py
 mv output.csv output_AOL-CONT-XX.csv
 
