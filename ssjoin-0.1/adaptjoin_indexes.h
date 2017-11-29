@@ -53,6 +53,7 @@ class AdaptJoinCommonMaxExtStructures {
 
 			void recordadd(unsigned int prefixnmb, unsigned int recordid) {
 				assert(prefixnmb < Algorithm::IndexStructure::MAX_PREFIX_ELL);
+				std::cout<<"record added "<<prefixnmb<<std::endl;
 				indexlists[prefixnmb].indexlist.push_back(IndexListEntry(recordid));
 			}
 
